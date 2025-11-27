@@ -287,7 +287,7 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <img src="/logo.svg" alt="Logo" className="w-14 h-14" />
+            <img src="/noback.png" alt="Logo" className="w-14 h-14" />
             <div>
               <h1 className="text-3xl font-bold text-primary">Admin Dashboard</h1>
               <p className="text-sm text-muted-foreground">Owoabenes Mothercare & Kids Boutique</p>

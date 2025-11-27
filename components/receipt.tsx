@@ -59,7 +59,7 @@ export default function Receipt({
     >
       {/* Logo */}
       <div className="flex justify-center mb-2" style={{ pageBreakInside: "avoid" }}>
-        <img src="/logo.svg" alt="Logo" className="w-20 h-20" style={{ maxWidth: "100%" }} />
+        <img src="/back.jpg" alt="Logo" className="w-20 h-20" style={{ maxWidth: "100%" }} />
       </div>
 
       {/* Header */}

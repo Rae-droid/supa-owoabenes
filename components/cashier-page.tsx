@@ -238,7 +238,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       {/* Header with company name and logout button */}
       <div className="flex items-center justify-between bg-white border-b border-border px-4 py-3 shadow-sm">
         <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="Logo" className="w-12 h-12" />
+          <img src="/noback.png" alt="Logo" className="w-12 h-12" />
           <div>
             <h1 className="text-2xl font-bold text-primary">Owoabenes</h1>
             <p className="text-xs text-muted-foreground">Mothercare & Kids Boutique</p>

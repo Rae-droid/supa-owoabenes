@@ -59,13 +59,13 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center">
-          <img src="/logo.svg" alt="Owoabenes Logo" className="w-24 h-24 mx-auto mb-4" />
+          <img src="/back.jpeg" alt="Owoabenes Logo" className="w-24 h-24 mx-auto mb-4" />
           <CardTitle className="text-3xl text-primary">Owoabenes</CardTitle>
           <CardDescription className="text-base">Mothercare & Kids Boutique</CardDescription>
-          <p className="text-xs text-muted-foreground mt-2">POS System</p>
+          <p className="text-xs text-muted-foreground mt-2">Point Of Sale System</p>
           <div className="mt-4 p-3 bg-primary/10 rounded-lg">
             <p className="text-xs font-semibold text-primary">Shop Hours</p>
-            <p className="text-sm text-foreground">8:00 AM - 5:00 PM Daily</p>
+            <p className="text-sm text-foreground">8:00 AM - 5:00 PM    MON - SAT</p>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -123,13 +123,13 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               )}
             </Button>
           </div>
-          <p className="text-xs text-center text-muted-foreground mt-4">
+          {/* <p className="text-xs text-center text-muted-foreground mt-4">
             <strong>Demo Passwords:</strong>
             <br />
             Cashier: cashier123
             <br />
             Admin: admin123
-          </p>
+          </p> */}
         </CardContent>
       </Card>
     </div>
