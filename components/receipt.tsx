@@ -1,3 +1,6 @@
+// Updated Receipt component WITHOUT Tailwind
+// Uses ONLY inline styles + custom CSS for perfect POS printing
+
 "use client"
 
 interface CartItem {
@@ -24,7 +27,6 @@ export default function Receipt({
   paymentMethod = "cash",
   amountReceived = 0,
 }: ReceiptProps) {
-  // Calculate total using only wholesale price + profit
   const subtotal = items.reduce((sum, item) => {
     const priceToUse = item.wholeSalePriceWithProfit || item.price
     return sum + priceToUse * item.quantity
@@ -36,138 +38,105 @@ export default function Receipt({
   }, 0)
 
   const totalProfit = subtotal - totalCost
-
   const discountAmount = (subtotal * discount) / 100
   const total = subtotal - discountAmount
+
   const now = new Date()
   const receiptNumber = Math.floor(Math.random() * 1000000)
-
   const numAmountReceived = Number(amountReceived) || 0
   const change = numAmountReceived - total
 
   return (
-    <div
-      id="receipt-content"
-      className="w-80 mx-auto text-xs font-mono text-black bg-white p-4"
-      style={{
-        width: "80mm",
-        margin: "0 auto",
-        padding: "8mm",
-        fontSize: "10px",
-        lineHeight: "1.4",
-      }}
-    >
-      {/* Logo */}
-      <div className="flex justify-center mb-2" style={{ pageBreakInside: "avoid" }}>
-        <img src="/back.jpeg" alt="Logo" className="w-20 h-20" style={{ maxWidth: "100%" }} />
-      </div>
+    <div>
+      <div
+        id="receipt-content"
+        style={{
+          width: "80mm",
+          margin: "0 auto",
+          background: "white",
+          fontFamily: "monospace",
+          fontSize: "13px",
+          padding: "8mm",
+          color: "black",
+          lineHeight: "1.4",
+        }}
+      >
+        {/* Logo */}
+        <div style={{ textAlign: "center", marginBottom: "8px" }}>
+          <img src="/back.jpeg" alt="Logo" style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+        </div>
 
-      {/* Header */}
-      <div className="text-center border-b-2 border-black pb-2 mb-2" style={{ pageBreakInside: "avoid" }}>
-        <h2 className="text-sm font-bold">OWOABENES</h2>
-        <p className="text-xs">Mothercare & Kids Boutique</p>
-        <p className="text-xs">Children's Products 0-18 Years</p>
-      </div>
+        {/* Header */}
+        <div style={{ textAlign: "center", borderBottom: "2px solid black", paddingBottom: "6px", marginBottom: "6px" }}>
+          <div style={{ fontWeight: "bold", fontSize: "15px" }}>OWOABENES</div>
+          <div>Mothercare & Kids Boutique</div>
+          <div>Children's Products 0-18 Years</div>
+        </div>
 
-      {/* Transaction Details */}
-      <div className="border-b border-dashed border-black pb-2 mb-2 text-xs" style={{ pageBreakInside: "avoid" }}>
-        <div className="flex justify-between">
-          <span>Receipt #:</span>
-          <span>{receiptNumber}</span>
+        {/* Transaction Details */}
+        <div style={{ borderBottom: "1px dashed black", paddingBottom: "6px", marginBottom: "6px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Receipt #:</span><span>{receiptNumber}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Date:</span><span>{now.toLocaleDateString()}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Time:</span><span>{now.toLocaleTimeString()}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
         </div>
-        <div className="flex justify-between">
-          <span>Date:</span>
-          <span>{now.toLocaleDateString()}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>Time:</span>
-          <span>{now.toLocaleTimeString()}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>Cashier:</span>
-          <span className="font-bold">Benedicta Sarpong</span>
-        </div>
-        <div className="flex justify-between">
-          <span>Customer:</span>
-          <span className="font-bold">{customerName || "Walk-in Customer"}</span>
-        </div>
-        <div className="flex justify-between">
-          <span>Payment:</span>
-          <span className="capitalize">{paymentMethod}</span>
-        </div>
-      </div>
 
-      {/* Items with Wholesale Price + Profit Only */}
-      <div className="border-b border-dashed border-black pb-2 mb-2">
-        <div className="flex justify-between border-b border-black pb-1 mb-1 text-xs font-bold">
-          <span>Item</span>
-          <span>Qty</span>
-          <span>Price+Profit</span>
-          <span>Total</span>
-        </div>
-        {items.map((item) => {
-          const priceToUse = item.wholeSalePriceWithProfit || item.price
-          return (
-            <div
-              key={item.id}
-              className="flex justify-between text-xs mb-2"
-              style={{ pageBreakInside: "avoid", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
-            >
-              <span className="flex-1">{item.name}</span>
-              <span className="w-8 text-right">{item.quantity}</span>
-              <span className="w-16 text-right">₵{priceToUse.toFixed(2)}</span>
-              <span className="w-16 text-right font-semibold">₵{(priceToUse * item.quantity).toFixed(2)}</span>
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Totals with Profit Breakdown */}
-      <div className="border-b border-dashed border-black pb-2 mb-2 text-xs" style={{ pageBreakInside: "avoid" }}>
-        <div className="flex justify-between">
-          <span>Subtotal (Revenue):</span>
-          <span>₵{subtotal.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between text-gray-700">
-          <span>Total Cost:</span>
-          <span>₵{totalCost.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between text-green-700 font-semibold">
-          <span>Total Profit:</span>
-          <span>₵{totalProfit.toFixed(2)}</span>
-        </div>
-        {discount > 0 && (
-          <div className="flex justify-between text-orange-700 border-t border-dashed border-black pt-1 mt-1">
-            <span>Discount ({discount}%):</span>
-            <span>-₵{discountAmount.toFixed(2)}</span>
+        {/* Items */}
+        <div style={{ borderBottom: "1px dashed black", paddingBottom: "6px", marginBottom: "6px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold", borderBottom: "1px solid black", paddingBottom: "4px", marginBottom: "4px" }}>
+            <span>Item</span><span>Qty</span><span>Price</span><span>Total</span>
           </div>
-        )}
-        <div className="flex justify-between font-bold text-sm mt-1 pt-1 border-t border-black">
-          <span>TOTAL:</span>
-          <span>₵{total.toFixed(2)}</span>
+
+          {items.map((item) => {
+            const priceToUse = item.wholeSalePriceWithProfit || item.price
+            return (
+              <div key={item.id} style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
+                <span style={{ width: "80px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.name}</span>
+                <span>{item.quantity}</span>
+                <span>₵{priceToUse.toFixed(2)}</span>
+                <span style={{ fontWeight: "bold" }}>₵{(priceToUse * item.quantity).toFixed(2)}</span>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Totals */}
+        <div style={{ borderBottom: "1px dashed black", paddingBottom: "6px", marginBottom: "6px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Subtotal:</span><span>₵{subtotal.toFixed(2)}</span></div>
+          {/* <div style={{ display: "flex", justifyContent: "space-between" }}><span>Total Cost:</span><span>₵{totalCost.toFixed(2)}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold" }}><span>Profit:</span><span>₵{totalProfit.toFixed(2)}</span></div> */}
+
+          {discount > 0 && (
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
+              <span>Discount ({discount}%):</span>
+              <span>-₵{discountAmount.toFixed(2)}</span>
+            </div>
+          )}
+
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "15px", fontWeight: "bold", marginTop: "6px", borderTop: "1px solid black", paddingTop: "4px" }}>
+            <span>TOTAL:</span>
+            <span>₵{total.toFixed(2)}</span>
+          </div>
+        </div>
+
+        {/* Payment */}
+        <div style={{ borderBottom: "1px dashed black", paddingBottom: "6px", marginBottom: "6px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Amount Received:</span><span>₵{numAmountReceived.toFixed(2)}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold", marginTop: "4px" }}><span>Change:</span><span>₵{Math.max(0, change).toFixed(2)}</span></div>
+        </div>
+
+        {/* Footer */}
+        <div style={{ textAlign: "center", marginTop: "8px" }}>
+          <div>Thank you for your purchase!</div>
+          <div>Please visit us again</div>
+          <div style={{ fontWeight: "bold", marginTop: "6px" }}>*** END OF RECEIPT ***</div>
         </div>
       </div>
 
-      {/* Payment Summary */}
-      <div className="border-b border-dashed border-black pb-2 mb-2 text-xs" style={{ pageBreakInside: "avoid" }}>
-        <div className="flex justify-between">
-          <span>Amount Received:</span>
-          <span className="font-bold">₵{numAmountReceived.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between font-bold text-green-700 pt-1">
-          <span>Change:</span>
-          <span>₵{Math.max(0, change).toFixed(2)}</span>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="text-center text-xs mt-2" style={{ pageBreakInside: "avoid" }}>
-        <p className="mb-1">Thank you for your purchase!</p>
-        <p className="text-xs">Please visit us again</p>
-        <p className="mt-2 text-black font-bold">*** END OF RECEIPT ***</p>
-      </div>
-
-      <style jsx>{`
+      {/* Print CSS */}
+      <style>{`
         @media print {
           body {
             margin: 0;
@@ -176,19 +145,49 @@ export default function Receipt({
           }
           #receipt-content {
             width: 80mm !important;
-            max-width: 80mm;
-            margin: 0 !important;
             padding: 8mm !important;
-            box-shadow: none;
-            page-break-after: avoid;
           }
           * {
             -webkit-print-color-adjust: exact !important;
-            color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
         }
       `}</style>
     </div>
   )
+}
+
+// PRINT FUNCTION
+export function printReceipt() {
+  // Only run in the browser
+  if (typeof window === "undefined") return
+
+  const content = document.getElementById("receipt-content")?.innerHTML
+  if (!content) return
+
+  const printWindow = window.open("", "_blank", "width=400,height=600")
+  if (!printWindow) return
+
+  printWindow.document.open()
+  printWindow.document.write(`
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Receipt</title>
+        <style>
+          body { margin: 0; font-family: monospace; width: 80mm; }
+          #print-area { width: 80mm; padding: 8mm; font-size: 10px; }
+          * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        </style>
+      </head>
+      <body>
+        <div id='print-area'>${content}</div>
+        <script>
+          window.onload = function() { window.print(); window.close(); }
+        </script>
+      </body>
+    </html>
+  `)
+
+  printWindow.document.close()
 }
