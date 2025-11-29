@@ -65,6 +65,9 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   const [isAddingProduct, setIsAddingProduct] = useState(false)
   const [isAddingStaff, setIsAddingStaff] = useState(false)
 
+  // ---------- ADDED: product search state ----------
+  const [productSearch, setProductSearch] = useState("")
+
   useEffect(() => {
     fetchProducts()
     fetchStaff()
@@ -281,6 +284,13 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       0,
     ),
   }
+
+  // ---------- ADDED: filtered products using productSearch ----------
+  const filteredProducts = products.filter((p) =>
+    p.name.toLowerCase().includes(productSearch.toLowerCase()) ||
+    p.category.toLowerCase().includes(productSearch.toLowerCase()) ||
+    p.brand_name.toLowerCase().includes(productSearch.toLowerCase())
+  )
 
   return (
     <div className="min-h-screen bg-muted p-4">
@@ -621,9 +631,20 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
               )}
             </Card>
 
+            {/* ---------- PRODUCTS LIST (SEARCH BAR ADDED) ---------- */}
             <Card>
               <CardHeader>
-                <CardTitle>All Products</CardTitle>
+                <div className="flex justify-between items-center w-full">
+                  <CardTitle>All Products</CardTitle>
+
+                  {/* product search input (uses productSearch state) */}
+                  <Input
+                    placeholder="Search products..."
+                    value={productSearch}
+                    onChange={(e) => setProductSearch(e.target.value)}
+                    className="w-48"
+                  />
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -631,8 +652,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                     <div className="flex justify-center py-8">
                       <LoadingSpinner size="md" variant="primary" label="Loading products..." />
                     </div>
-                  ) : products.length > 0 ? (
-                    products.map((product) => (
+                  ) : filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
                       <Card key={product.id} className="overflow-hidden">
                         {product.image && (
                           <img
