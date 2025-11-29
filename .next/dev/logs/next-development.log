@@ -11,3 +11,48 @@
 [00:00:14.758] Server  LOG      ✓ Ready in 10.5s
 [00:00:35.542] Server  LOG      ○ Compiling / ...
 [00:00:49.617] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:09.537] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:10.442] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+              <Home params={Promise} searchParams={Promise}>
+                <LoginPage onLogin={function bound dispatchSetState}>
+                  <div className="min-h-scre...">
+                    <Card className="w-full max...">
+                      <div data-slot="card" className="bg-card te...">
+                        <CardHeader>
+                        <CardContent className="space-y-4">
+                          <div data-slot="card-content" className="px-6 space...">
+                            <div>
+                            <div>
+                              <label>
+                              <input
+                                type="password"
+                                value=""
+                                onChange={function onChange}
+                                placeholder="Enter password"
+                                className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:r..."
+                                onKeyPress={function onKeyPress}
+                                disabled={false}
+-                               data-has-listeners="true"
+                              >
+                            ...
+          ...
+        ...
+
