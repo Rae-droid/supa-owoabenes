@@ -75,7 +75,7 @@ export default function LoadingSpinner({
           strokeDasharray={`${2 * Math.PI * radius * 0.3}`}
           strokeDashoffset="0"
           style={{
-            animation: "spinnerRotate 2s linear infinite",
+            animation: "spinnerRotate 5s linear infinite",
           }}
         />
 
