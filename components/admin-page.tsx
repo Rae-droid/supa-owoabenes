@@ -852,8 +852,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                     <div>
                       <p className="text-xs text-muted-foreground">Date</p>
                       <p className="font-semibold">
-                        {new Date(selectedTransaction.date).toLocaleDateString()}{" "}
-                        {new Date(selectedTransaction.date).toLocaleTimeString()}
+                        {new Date(selectedTransaction.date).toLocaleDateString()}
+                     
                       </p>
                     </div>
                     <div>
