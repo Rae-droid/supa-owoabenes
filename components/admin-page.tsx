@@ -65,9 +65,6 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   const [isAddingProduct, setIsAddingProduct] = useState(false)
   const [isAddingStaff, setIsAddingStaff] = useState(false)
 
-  // ---------- ADDED: product search state ----------
-  const [productSearch, setProductSearch] = useState("")
-
   useEffect(() => {
     fetchProducts()
     fetchStaff()
@@ -284,13 +281,6 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       0,
     ),
   }
-
-  // ---------- ADDED: filtered products using productSearch ----------
-  const filteredProducts = products.filter((p) =>
-    p.name.toLowerCase().includes(productSearch.toLowerCase()) ||
-    p.category.toLowerCase().includes(productSearch.toLowerCase()) ||
-    p.brand_name.toLowerCase().includes(productSearch.toLowerCase())
-  )
 
   return (
     <div className="min-h-screen bg-muted p-4">
@@ -631,20 +621,9 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
               )}
             </Card>
 
-            {/* ---------- PRODUCTS LIST (SEARCH BAR ADDED) ---------- */}
             <Card>
               <CardHeader>
-                <div className="flex justify-between items-center w-full">
-                  <CardTitle>All Products</CardTitle>
-
-                  {/* product search input (uses productSearch state) */}
-                  <Input
-                    placeholder="Search products..."
-                    value={productSearch}
-                    onChange={(e) => setProductSearch(e.target.value)}
-                    className="w-48"
-                  />
-                </div>
+                <CardTitle>All Products</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -652,8 +631,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                     <div className="flex justify-center py-8">
                       <LoadingSpinner size="md" variant="primary" label="Loading products..." />
                     </div>
-                  ) : filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => (
+                  ) : products.length > 0 ? (
+                    products.map((product) => (
                       <Card key={product.id} className="overflow-hidden">
                         {product.image && (
                           <img
@@ -869,6 +848,23 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                     <div>
                       <p className="text-xs text-muted-foreground">Payment Method</p>
                       <p className="font-semibold">{selectedTransaction.paymentMethod}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Date</p>
+                      <p className="font-semibold">
+                        {new Date(selectedTransaction.date).toLocaleDateString()}{" "}
+                        {new Date(selectedTransaction.date).toLocaleTimeString()}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Cashier</p>
+                      <p className="font-semibold">Benedicta Sarpong</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Time:</p>
+                      <p className="font-semibold">
+                        {new Date(selectedTransaction.date).toLocaleTimeString()}
+                      </p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Amount Received</p>

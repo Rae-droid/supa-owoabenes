@@ -56,3 +56,9 @@ It can also happen if the client has a browser extension installed which messes 
           ...
         ...
 
+[00:49:08.844] Server  LOG      ✓ Compiled in 964ms
+[00:49:20.913] Server  LOG      ✓ Compiled in 798ms
+[00:49:31.079] Server  LOG      ✓ Compiled in 304ms
+[00:49:54.145] Server  LOG      ✓ Compiled in 393ms
+[00:50:05.274] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:21.921] Server  LOG      ✓ Compiled in 518ms
