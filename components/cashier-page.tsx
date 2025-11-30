@@ -676,11 +676,9 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                 <div ref={receiptRef} className="flex-1">
                   <ReceiptComponent
                     items={lastTransaction}
-                    subtotal={lastTransaction.reduce((sum, item) => sum + item.subtotal, 0)}
                     discount={
                       (lastTransaction.reduce((sum, item) => sum + item.subtotal, 0) * discountPercentage) / 100
                     }
-                    total={totalAmount}
                     customerName={receiptCustomerName}
                     cashierName="Benedicta Sarpong"
                     amountReceived={receiptAmountReceived}
