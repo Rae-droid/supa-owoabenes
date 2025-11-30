@@ -492,7 +492,8 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                                 </p>
                                 <p className="text-xs text-muted-foreground">{transaction.items?.length || 0} items</p>
                                 <p className="text-[10px] text-muted-foreground">
-                                  {new Date(transaction.timestamp || transaction.created_at).toLocaleTimeString()}
+                                  {new Date(transaction.timestamp || transaction.created_at).toLocaleTimeString()}{" "}
+                                  {new Date(transaction.timestamp || transaction.created_at).toLocaleDateString()}
                                 </p>
                               </div>
                               <p className="text-sm font-bold text-green-600">₵{(transaction.total || 0).toFixed(2)}</p>
@@ -681,7 +682,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                     }
                     total={totalAmount}
                     customerName={receiptCustomerName}
-                    cashierName="Owoabenes"
+                    cashierName="Benedicta Sarpong"
                     amountReceived={receiptAmountReceived}
                     change={receiptAmountReceived - totalAmount}
                     paymentMethod={formatPaymentMethod(selectedPaymentMethod)}
