@@ -13,17 +13,14 @@ export default function LoadingSpinner({
   fullScreen = false,
   label = "Loading...",
 }: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: "w-8 h-8",
-    md: "w-12 h-12",
-    lg: "w-16 h-16",
+  const sizeMap = {
+    sm: 80,
+    md: 120,
+    lg: 160,
   }
 
-  const variantColors = {
-    primary: "from-primary to-accent",
-    secondary: "from-secondary to-primary",
-    accent: "from-accent to-secondary",
-  }
+  const spinnerSize = sizeMap[size]
+  const radius = spinnerSize / 2 - 10
 
   const spinnerContent = (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -37,52 +34,60 @@ export default function LoadingSpinner({
           }
         }
         
-        @keyframes pulseRing {
-          0% {
-            transform: scale(0.8);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1.4);
-            opacity: 0;
-          }
-        }
-        
-        .spinner-ring {
-          animation: pulseRing 1.5s ease-out infinite;
-        }
-        
-        .spinner-inner {
-          animation: spinnerRotate 2s linear infinite;
+        .spinner-text {
+          animation: spinnerRotate 3s linear infinite;
+          transform-origin: center;
         }
       `}</style>
 
-      <div className="relative flex items-center justify-center">
-        {/* Outer pulsing ring */}
-        <div
-          className={`absolute ${sizeClasses[size]} rounded-full border-2 border-transparent bg-gradient-to-r ${variantColors[variant]} spinner-ring opacity-50`}
+      <svg width={spinnerSize} height={spinnerSize} viewBox={`0 0 ${spinnerSize} ${spinnerSize}`}>
+        <defs>
+          <path
+            id="spinnerPath"
+            d={`M ${spinnerSize / 2}, ${spinnerSize / 2} m 0, -${radius} a ${radius},${radius} 0 1,1 0,${radius * 2} a ${radius},${radius} 0 1,1 0,-${radius * 2}`}
+            fill="none"
+          />
+        </defs>
+
+        {/* Rotating text along circular path */}
+        <g className="spinner-text">
+          <text
+            fontSize="16"
+            fontWeight="700"
+            letterSpacing="2"
+            fill="currentColor"
+            className="text-primary"
+          >
+            <textPath href="#spinnerPath" startOffset="0%" textAnchor="start">
+              owoabenes • owoabenes • owoabenes •{" "}
+            </textPath>
+          </text>
+        </g>
+
+        {/* Animated gradient ring */}
+        <circle
+          cx={spinnerSize / 2}
+          cy={spinnerSize / 2}
+          r={radius}
+          fill="none"
+          stroke="url(#gradientRing)"
+          strokeWidth="2"
+          strokeDasharray={`${2 * Math.PI * radius * 0.3}`}
+          strokeDashoffset="0"
           style={{
-            background: `conic-gradient(from 0deg, var(--color-${variant}), transparent 70%)`,
+            animation: "spinnerRotate 2s linear infinite",
           }}
         />
 
-        {/* Middle spinning ring */}
-        <div
-          className={`absolute ${sizeClasses[size]} rounded-full border-3 border-transparent bg-gradient-to-r ${variantColors[variant]} spinner-inner`}
-          style={{
-            borderImage: `conic-gradient(from 0deg, var(--color-${variant}), transparent 40%) 1`,
-          }}
-        />
+        <defs>
+          <linearGradient id="gradientRing" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--color-primary, #3b82f6)" />
+            <stop offset="100%" stopColor="var(--color-accent, #a855f7)" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-        {/* Inner static center */}
-        <div
-          className={`${sizeClasses[size]} rounded-full bg-gradient-to-br ${variantColors[variant]} flex items-center justify-center shadow-lg`}
-        >
-          <div className="w-2/3 h-2/3 rounded-full bg-background" />
-        </div>
-      </div>
-
-      {label && <p className={`text-sm font-medium text-${variant}`}>{label}</p>}
+      {label && <p className="text-sm font-medium text-primary">{label}</p>}
     </div>
   )
 
