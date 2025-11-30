@@ -110,7 +110,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
         const formattedTransactions =
           result.data?.map((t: any) => ({
             id: t.id,
-            date: new Date(t.created_at).toLocaleString(),
+            // keep the raw ISO timestamp so new Date(...) works reliably later
+            date: t.created_at,
             total: t.total,
             itemCount: t.items?.length || 0,
             items: t.items || [],
