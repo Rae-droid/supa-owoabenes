@@ -1,73 +1,36 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import LoadingSpinner from "@/components/loading-spinner"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card"
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
+import LoadingSpinner from "./loading-spinner"
 
 interface Product {
   id: string
   name: string
   price: number
-  wholesale_price: number
-  wholesale_price_with_profit: number
   category: string
   image?: string
+  wholesale_price?: number
+  wholesale_price_with_profit?: number
+  stock?: number
+  quantity?: number
   brand_name?: string
-  quantity: number
 }
 
 interface ProductGridProps {
-  onAddToCart: (product: any) => void
+  onAddToCart: (product: Product) => void
 }
 
-const FALLBACK_PRODUCTS = [
-  // Newborn (0-3 months)
-  {
-    id: "1",
-    name: "Baby Diaper Pack",
-    price: 15.99,
-    wholesale_price: 10.99,
-    wholesale_price_with_profit: 12.99,
-    category: "Diapers",
-    brand_name: "BabyDry",
-    quantity: 50,
-  },
-  {
-    id: "2",
-    name: "Newborn Clothing Set",
-    price: 24.99,
-    wholesale_price: 17.99,
-    wholesale_price_with_profit: 20.99,
-    category: "Clothing",
-    brand_name: "MomsCare",
-    quantity: 30,
-  },
-  {
-    id: "3",
-    name: "Baby Bottle Set",
-    price: 18.5,
-    wholesale_price: 12.99,
-    wholesale_price_with_profit: 15.49,
-    category: "Feeding",
-    brand_name: "FeedRight",
-    quantity: 40,
-  },
-]
-
 export default function ProductGrid({ onAddToCart }: ProductGridProps) {
-  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS)
+  const [products, setProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [isLoading, setIsLoading] = useState(true)
 
-  // Fetch products from database instead of using hardcoded list
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
   const fetchProducts = async () => {
+    setIsLoading(true)
     try {
       const res = await fetch("/api/products")
       const result = await res.json()
@@ -81,13 +44,36 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
     }
   }
 
+  // Initial fetch
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  // Listen for refresh events
+  useEffect(() => {
+    const handleRefresh = () => {
+      fetchProducts()
+    }
+    
+    window.addEventListener("productsRefresh", handleRefresh)
+    return () => window.removeEventListener("productsRefresh", handleRefresh)
+  }, [])
+
   const categories = [...new Set(products.map((p) => p.category))]
   const filteredProducts = products.filter((p) => {
     const matchesCategory = !selectedCategory || p.category === selectedCategory
     const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase())
-    const hasStock = p.quantity > 0
+    const hasStock = (p.quantity || 0) > 0
     return matchesCategory && matchesSearch && hasStock
   })
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <LoadingSpinner size="lg" />
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-2">
@@ -115,7 +101,7 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
             <Button
               onClick={() => setSelectedCategory(null)}
               variant={selectedCategory === null ? "default" : "outline"}
-              className={`text-[10px] h-6 px-2 ${selectedCategory === null ? "bg-primary hover:bg-primary/90" : ""}`}
+              className="text-[10px] h-6 px-2"
               size="sm"
             >
               All Products
@@ -125,9 +111,7 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 variant={selectedCategory === cat ? "default" : "outline"}
-                className={`text-[10px] h-6 px-2 ${
-                  selectedCategory === cat ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground" : ""
-                }`}
+                className="text-[10px] h-6 px-2"
                 size="sm"
               >
                 {cat}
@@ -145,7 +129,6 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
             <Card key={product.id} className="hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
-              {/* Product Image */}
               <div className="relative w-full h-48 bg-muted overflow-hidden">
                 <img
                   src={product.image || "/placeholder.svg?height=192&width=192&query=product"}
@@ -153,12 +136,10 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
                   className="w-full h-full object-cover"
                 />
               </div>
-
               <CardHeader className="pb-3">
                 <CardTitle className="text-base line-clamp-2">{product.name}</CardTitle>
                 <CardDescription className="text-xs">{product.brand_name || product.category}</CardDescription>
               </CardHeader>
-
               <CardContent className="space-y-3 flex-grow flex flex-col">
                 <div className="space-y-2 bg-muted p-2 rounded">
                   <div className="flex justify-between items-center">
@@ -176,7 +157,6 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
                     <span className="text-sm font-bold text-blue-600">{product.quantity}</span>
                   </div>
                 </div>
-
                 <div className="flex justify-between items-center">
                   <span className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded">
                     {product.category}
