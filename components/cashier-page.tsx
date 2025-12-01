@@ -71,6 +71,18 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   useEffect(() => {
     mutateTransactions()
   }, [])
+  const refreshProducts = () => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          window.dispatchEvent(
+            new CustomEvent("productsNeedRefresh", { detail: result.data })
+          )
+        }
+      })
+      .catch((err) => console.error("Product refresh error:", err))
+  }
 
   const addToCart = (product: any) => {
     setCartItems((prev) => {
@@ -265,6 +277,16 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
         {/* LEFT SIDE - Products Grid (takes full width on mobile, 2 cols on desktop) */}
         <div className="lg:col-span-3 flex flex-col overflow-hidden">
           {/* Analytics Header */}
+
+           {/* 🔄 REFRESH BUTTON ADDED */}
+          <div className="flex justify-end mb-2">
+            <Button
+              onClick={refreshProducts}
+              className="bg-primary text-white"
+            >
+              🔄 Refresh Products
+            </Button>
+          </div>
 
           {/* Products Grid - scrollable */}
           <div className="flex-1 overflow-y-auto" data-product-grid>
