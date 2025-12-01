@@ -60,6 +60,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   const [receiptAmountReceived, setReceiptAmountReceived] = useState(0)
   const [paymentError, setPaymentError] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
+  const [isRefreshing, setIsRefreshing] = useState(false)
   const receiptRef = useRef<any>(null)
 
   const {
@@ -72,6 +73,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     mutateTransactions()
   }, [])
   const refreshProducts = async () => {
+    setIsRefreshing(true)
     try {
       const res = await fetch("/api/products")
       const result = await res.json()
@@ -84,6 +86,8 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     } catch (err) {
       console.error("Product refresh error:", err)
       alert("Failed to refresh products")
+    } finally {
+      setIsRefreshing(false)
     }
   }
 
@@ -295,9 +299,17 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
           <div className="flex justify-end mb-2">
             <Button
               onClick={refreshProducts}
+              disabled={isRefreshing}
               className="bg-primary text-white"
             >
-              🔄 Refresh Products
+              {isRefreshing ? (
+                <div className="flex items-center gap-2">
+                  <LoadingSpinner size="sm" />
+                  <span>Refreshing...</span>
+                </div>
+              ) : (
+                "🔄 Refresh Products"
+              )}
             </Button>
           </div>
 
@@ -736,8 +748,5 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       </div>
     </div>
   )
-}
-function fetchProducts() {
-  throw new Error("Function not implemented.")
 }
 
