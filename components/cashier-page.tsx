@@ -71,17 +71,20 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   useEffect(() => {
     mutateTransactions()
   }, [])
-  const refreshProducts = () => {
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.success) {
-          window.dispatchEvent(
-            new CustomEvent("productsNeedRefresh", { detail: result.data })
-          )
-        }
-      })
-      .catch((err) => console.error("Product refresh error:", err))
+  const refreshProducts = async () => {
+    try {
+      const res = await fetch("/api/products")
+      const result = await res.json()
+      if (result.success) {
+        // Dispatch event for ProductGrid to listen
+        window.dispatchEvent(
+          new CustomEvent("productsRefresh", { detail: result.data })
+        )
+      }
+    } catch (err) {
+      console.error("Product refresh error:", err)
+      alert("Failed to refresh products")
+    }
   }
 
   const addToCart = (product: any) => {
@@ -244,6 +247,16 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     }
     return methods[method] || method
   }
+
+  useEffect(() => {
+    const handleRefresh = (e: any) => {
+      // Re-fetch or update your products state
+      fetchProducts()
+    }
+    
+    window.addEventListener("productsRefresh", handleRefresh)
+    return () => window.removeEventListener("productsRefresh", handleRefresh)
+  }, [])
 
   return (
     <div className="w-full min-h-screen bg-background">
@@ -724,3 +737,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     </div>
   )
 }
+function fetchProducts() {
+  throw new Error("Function not implemented.")
+}
+
