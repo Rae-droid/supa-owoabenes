@@ -127,7 +127,6 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
             }
           })
           .catch((err) => console.error("[v0] Error refetching products:", err))
-      }
     }, 100)
   }
 
@@ -303,10 +302,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
               className="bg-primary text-white"
             >
               {isRefreshing ? (
-                <div className="flex items-center gap-2">
-                  <LoadingSpinner size="sm" />
-                  <span>Refreshing...</span>
-                </div>
+                <span>Refreshing...</span>
               ) : (
                 "🔄 Refresh Products"
               )}
