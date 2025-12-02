@@ -71,6 +71,7 @@ export default function Receipt({
           <div style={{ fontWeight: "bold", fontSize: "15px" }}>OWOABENES</div>
           <div>Mothercare & Kids Boutique</div>
           <div>Children's Products 0-18 Years</div>
+          <div>Tel: 0549 241 991/ 0548 048 520</div>
         </div>
 
         {/* Transaction Details */}
@@ -81,6 +82,7 @@ export default function Receipt({
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
+          
         </div>
 
         {/* Items */}
