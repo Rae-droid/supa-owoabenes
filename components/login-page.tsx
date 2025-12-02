@@ -18,7 +18,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
   const getCurrentHour = () => new Date().getHours()
   const shopOpen = 8
-  const shopClose = 17 // 5 PM in 24-hour format
+  const shopClose = 20 // 8 PM in 24-hour format
   const currentHour = getCurrentHour()
   const isShopOpen = currentHour >= shopOpen && currentHour < shopClose
   const timeUntilOpen = shopOpen - currentHour
@@ -38,7 +38,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
       if (currentHour < shopOpen) {
         setError(`Shop opens at 8:00 AM. Please return in ${timeUntilOpen} hour(s).`)
       } else {
-        setError(`Shop closed at 5:00 PM. Please return tomorrow at 8:00 AM.`)
+        setError(`Shop closed at 8:00 PM. Please return tomorrow at 8:00 AM.`)
       }
       setIsLoadingCashier(false)
       return
@@ -65,7 +65,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           <p className="text-xs text-muted-foreground mt-2">Point Of Sale System</p>
           <div className="mt-4 p-3 bg-primary/10 rounded-lg">
             <p className="text-xs font-semibold text-primary">Shop Hours</p>
-            <p className="text-sm text-foreground">8:00 AM - 5:00 PM    MON - SAT</p>
+            <p className="text-sm text-foreground">8:00 AM - 8:00 PM    MON - SAT</p>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
