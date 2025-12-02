@@ -64,6 +64,7 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   const [isLoadingTransactions, setIsLoadingTransactions] = useState(false)
   const [isAddingProduct, setIsAddingProduct] = useState(false)
   const [isAddingStaff, setIsAddingStaff] = useState(false)
+  const [productSearch, setProductSearch] = useState("")
 
   useEffect(() => {
     fetchProducts()
@@ -246,6 +247,26 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
     }
   }
 
+  const handleDeleteProduct = async (productId: string) => {
+    if (confirm("Are you sure you want to delete this product?")) {
+      try {
+        const res = await fetch(`/api/products/${productId}`, {
+          method: "DELETE",
+        });
+        const result = await res.json();
+
+        if (res.ok && result.success) { // Check if the response is OK and the result indicates success
+          setProducts(products.filter((product) => product.id !== productId));
+          console.log("[v0] Product deleted successfully");
+        } else {
+          console.error("[v0] Error deleting product:", result.error || "Unknown error");
+        }
+      } catch (error) {
+        console.error("[v0] Error deleting product:", error);
+      }
+    }
+  };
+
   const filteredTransactions = transactions.filter(
     (t) =>
       t.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -282,6 +303,16 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       0,
     ),
   }
+
+  const filteredProducts = products.filter((p) => {
+    const q = productSearch.trim().toLowerCase()
+    if (!q) return true
+    return (
+      (p.name || "").toLowerCase().includes(q) ||
+      (p.brand_name || "").toLowerCase().includes(q) ||
+      (p.category || "").toLowerCase().includes(q)
+    )
+  })
 
   return (
     <div className="min-h-screen bg-muted p-4">
@@ -627,13 +658,20 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                 <CardTitle>All Products</CardTitle>
               </CardHeader>
               <CardContent>
+                <div className="mb-4">
+                  <Input
+                    placeholder="Search products by name, brand or category..."
+                    value={productSearch}
+                    onChange={(e) => setProductSearch(e.target.value)}
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {isLoadingProducts ? (
                     <div className="flex justify-center py-8">
                       <LoadingSpinner size="md" variant="primary" label="Loading products..." />
                     </div>
-                  ) : products.length > 0 ? (
-                    products.map((product) => (
+                  ) : filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
                       <Card key={product.id} className="overflow-hidden">
                         {product.image && (
                           <img
@@ -659,6 +697,12 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                               {(product.wholesale_price_with_profit - product.wholesale_price).toFixed(2)}
                             </p>
                           </div>
+                          <Button
+                            onClick={() => handleDeleteProduct(product.id)}
+                            className="mt-2 bg-destructive hover:bg-destructive/90 text-destructive-foreground"
+                          >
+                            Delete
+                          </Button>
                         </CardContent>
                       </Card>
                     ))

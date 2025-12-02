@@ -143,14 +143,8 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
               <CardContent className="space-y-3 flex-grow flex flex-col">
                 <div className="space-y-2 bg-muted p-2 rounded">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Wholesale Price:</span>
-                    <span className="font-bold text-primary">₵{product.wholesale_price?.toFixed(2) || "N/A"}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">WS + Profit:</span>
-                    <span className="text-sm font-medium text-green-600">
-                      ₵{product.wholesale_price_with_profit?.toFixed(2) || "N/A"}
-                    </span>
+                    <span className="text-xs text-muted-foreground">Price:</span>
+                    <span className="font-bold text-primary">₵{product.wholesale_price_with_profit?.toFixed(2) || "N/A"}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-muted-foreground">Stock:</span>

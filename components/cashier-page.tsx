@@ -127,7 +127,8 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
             }
           })
           .catch((err) => console.error("[v0] Error refetching products:", err))
-    }, 100)
+      }
+    }, 100);
   }
 
   const removeFromCart = (id: string) => {
@@ -254,7 +255,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   useEffect(() => {
     const handleRefresh = (e: any) => {
       // Re-fetch or update your products state
-      fetchProducts()
+      refreshProducts()
     }
     
     window.addEventListener("productsRefresh", handleRefresh)
