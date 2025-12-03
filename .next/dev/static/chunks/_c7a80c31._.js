@@ -244,109 +244,177 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 "use client";
 ;
 function LoadingSpinner({ size = "md", variant = "primary", fullScreen = false, label = "Loading..." }) {
-    const sizeClasses = {
-        sm: "w-8 h-8",
-        md: "w-12 h-12",
-        lg: "w-16 h-16"
+    const sizeMap = {
+        sm: 80,
+        md: 120,
+        lg: 160
     };
-    const variantColors = {
-        primary: "from-primary to-accent",
-        secondary: "from-secondary to-primary",
-        accent: "from-accent to-secondary"
-    };
+    const spinnerSize = sizeMap[size];
+    const text = "owoabenes mothercare • ";
     const spinnerContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex flex-col items-center justify-center gap-4",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `
         @keyframes spinnerRotate {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+          0% { opacity: .7; transform: scale(0.95); }
+          50% { opacity: 1; transform: scale(1); }
+          100% { opacity: .7; transform: scale(0.95); }
         }
         
-        @keyframes pulseRing {
-          0% {
-            transform: scale(0.8);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1.4);
-            opacity: 0;
-          }
+        .text-circle {
+          animation: spinnerRotate 8s linear infinite;
+          transform-origin: center;
         }
-        
-        .spinner-ring {
-          animation: pulseRing 1.5s ease-out infinite;
-        }
-        
-        .spinner-inner {
-          animation: spinnerRotate 2s linear infinite;
+
+        .glow-ring {
+          animation: spinnerRotate 3s linear infinite, pulseGlow 2s ease-in-out infinite;
         }
       `
             }, void 0, false, {
                 fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 30,
+                lineNumber: 27,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative flex items-center justify-center",
+                className: "relative",
+                style: {
+                    width: spinnerSize,
+                    height: spinnerSize
+                },
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `absolute ${sizeClasses[size]} rounded-full border-2 border-transparent bg-gradient-to-r ${variantColors[variant]} spinner-ring opacity-50`,
-                        style: {
-                            background: `conic-gradient(from 0deg, var(--color-${variant}), transparent 70%)`
-                        }
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                        width: spinnerSize,
+                        height: spinnerSize,
+                        viewBox: `0 0 ${spinnerSize} ${spinnerSize}`,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        id: "circleTextPath",
+                                        d: `
+                M ${spinnerSize / 2}, ${spinnerSize / 2}
+                m 0, -${spinnerSize / 2 - 15}
+                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, ${spinnerSize - 30}
+                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, -${spinnerSize - 30}
+              `,
+                                        fill: "none"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/loading-spinner.tsx",
+                                        lineNumber: 52,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                        id: "gradText",
+                                        x1: "0%",
+                                        y1: "0%",
+                                        x2: "100%",
+                                        y2: "100%",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                                offset: "0%",
+                                                stopColor: "var(--color-primary, #3b82f6)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/loading-spinner.tsx",
+                                                lineNumber: 64,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                                offset: "100%",
+                                                stopColor: "var(--color-accent, #a855f7)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/loading-spinner.tsx",
+                                                lineNumber: 65,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/loading-spinner.tsx",
+                                        lineNumber: 63,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 51,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
+                                fill: "url(#gradText)",
+                                fontSize: spinnerSize / 10,
+                                fontWeight: "700",
+                                className: "text-circle tracking-[3px]",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textPath", {
+                                    href: "#circleTextPath",
+                                    children: text.repeat(10)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/loading-spinner.tsx",
+                                    lineNumber: 76,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 70,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                cx: spinnerSize / 2,
+                                cy: spinnerSize / 2,
+                                r: spinnerSize / 2 - 25,
+                                stroke: "url(#gradText)",
+                                strokeWidth: "6",
+                                fill: "none",
+                                className: "glow-ring drop-shadow-[0_0_10px_rgba(168,85,247,.5)]",
+                                strokeDasharray: `${2 * Math.PI * (spinnerSize / 2 - 25) * 0.28}`
+                            }, void 0, false, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 82,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/loading-spinner.tsx",
-                        lineNumber: 62,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `absolute ${sizeClasses[size]} rounded-full border-3 border-transparent bg-gradient-to-r ${variantColors[variant]} spinner-inner`,
+                        className: "absolute rounded-full bg-background",
                         style: {
-                            borderImage: `conic-gradient(from 0deg, var(--color-${variant}), transparent 40%) 1`
+                            width: spinnerSize * 0.45,
+                            height: spinnerSize * 0.45,
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            boxShadow: "0 0 25px rgba(255,255,255,0.2)"
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/loading-spinner.tsx",
-                        lineNumber: 70,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `${sizeClasses[size]} rounded-full bg-gradient-to-br ${variantColors[variant]} flex items-center justify-center shadow-lg`,
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-2/3 h-2/3 rounded-full bg-background"
-                        }, void 0, false, {
-                            fileName: "[project]/components/loading-spinner.tsx",
-                            lineNumber: 81,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/loading-spinner.tsx",
-                        lineNumber: 78,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 60,
+                lineNumber: 49,
                 columnNumber: 7
             }, this),
             label && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: `text-sm font-medium text-${variant}`,
+                className: "text-sm font-medium text-primary",
                 children: label
             }, void 0, false, {
                 fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 85,
+                lineNumber: 108,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/loading-spinner.tsx",
-        lineNumber: 29,
+        lineNumber: 26,
         columnNumber: 5
     }, this);
     if (fullScreen) {
@@ -355,7 +423,7 @@ function LoadingSpinner({ size = "md", variant = "primary", fullScreen = false, 
             children: spinnerContent
         }, void 0, false, {
             fileName: "[project]/components/loading-spinner.tsx",
-            lineNumber: 91,
+            lineNumber: 114,
             columnNumber: 7
         }, this);
     }
@@ -377,8 +445,8 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/loading-spinner.tsx [app-client] (ecmascript)");
 ;
@@ -389,52 +457,14 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-const FALLBACK_PRODUCTS = [
-    // Newborn (0-3 months)
-    {
-        id: "1",
-        name: "Baby Diaper Pack",
-        price: 15.99,
-        wholesale_price: 10.99,
-        wholesale_price_with_profit: 12.99,
-        category: "Diapers",
-        brand_name: "BabyDry",
-        quantity: 50
-    },
-    {
-        id: "2",
-        name: "Newborn Clothing Set",
-        price: 24.99,
-        wholesale_price: 17.99,
-        wholesale_price_with_profit: 20.99,
-        category: "Clothing",
-        brand_name: "MomsCare",
-        quantity: 30
-    },
-    {
-        id: "3",
-        name: "Baby Bottle Set",
-        price: 18.5,
-        wholesale_price: 12.99,
-        wholesale_price_with_profit: 15.49,
-        category: "Feeding",
-        brand_name: "FeedRight",
-        quantity: 40
-    }
-];
 function ProductGrid({ onAddToCart }) {
     _s();
-    const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(FALLBACK_PRODUCTS);
+    const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    // Fetch products from database instead of using hardcoded list
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "ProductGrid.useEffect": ()=>{
-            fetchProducts();
-        }
-    }["ProductGrid.useEffect"], []);
     const fetchProducts = async ()=>{
+        setIsLoading(true);
         try {
             const res = await fetch("/api/products");
             const result = await res.json();
@@ -447,15 +477,51 @@ function ProductGrid({ onAddToCart }) {
             setIsLoading(false);
         }
     };
+    // Initial fetch
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ProductGrid.useEffect": ()=>{
+            fetchProducts();
+        }
+    }["ProductGrid.useEffect"], []);
+    // Listen for refresh events
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ProductGrid.useEffect": ()=>{
+            const handleRefresh = {
+                "ProductGrid.useEffect.handleRefresh": ()=>{
+                    fetchProducts();
+                }
+            }["ProductGrid.useEffect.handleRefresh"];
+            window.addEventListener("productsRefresh", handleRefresh);
+            return ({
+                "ProductGrid.useEffect": ()=>window.removeEventListener("productsRefresh", handleRefresh)
+            })["ProductGrid.useEffect"];
+        }
+    }["ProductGrid.useEffect"], []);
     const categories = [
         ...new Set(products.map((p)=>p.category))
     ];
     const filteredProducts = products.filter((p)=>{
         const matchesCategory = !selectedCategory || p.category === selectedCategory;
         const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase());
-        const hasStock = p.quantity > 0;
+        const hasStock = (p.quantity || 0) > 0;
         return matchesCategory && matchesSearch && hasStock;
     });
+    if (isLoading) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex items-center justify-center h-96",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                size: "lg"
+            }, void 0, false, {
+                fileName: "[project]/components/product-grid.tsx",
+                lineNumber: 73,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/components/product-grid.tsx",
+            lineNumber: 72,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "space-y-2",
         children: [
@@ -468,12 +534,12 @@ function ProductGrid({ onAddToCart }) {
                             children: "Search Products"
                         }, void 0, false, {
                             fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 96,
+                            lineNumber: 82,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 95,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -486,18 +552,18 @@ function ProductGrid({ onAddToCart }) {
                             className: "w-full h-7 text-xs"
                         }, void 0, false, {
                             fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 99,
+                            lineNumber: 85,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 98,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 94,
+                lineNumber: 80,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -509,12 +575,12 @@ function ProductGrid({ onAddToCart }) {
                             children: "Categories"
                         }, void 0, false, {
                             fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 111,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 110,
+                        lineNumber: 96,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -525,40 +591,40 @@ function ProductGrid({ onAddToCart }) {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     onClick: ()=>setSelectedCategory(null),
                                     variant: selectedCategory === null ? "default" : "outline",
-                                    className: `text-[10px] h-6 px-2 ${selectedCategory === null ? "bg-primary hover:bg-primary/90" : ""}`,
+                                    className: "text-[10px] h-6 px-2",
                                     size: "sm",
                                     children: "All Products"
                                 }, void 0, false, {
                                     fileName: "[project]/components/product-grid.tsx",
-                                    lineNumber: 115,
+                                    lineNumber: 101,
                                     columnNumber: 13
                                 }, this),
                                 categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                         onClick: ()=>setSelectedCategory(cat),
                                         variant: selectedCategory === cat ? "default" : "outline",
-                                        className: `text-[10px] h-6 px-2 ${selectedCategory === cat ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground" : ""}`,
+                                        className: "text-[10px] h-6 px-2",
                                         size: "sm",
                                         children: cat
                                     }, cat, false, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 110,
                                         columnNumber: 15
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 114,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 113,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 109,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -569,12 +635,12 @@ function ProductGrid({ onAddToCart }) {
                     label: "Loading products..."
                 }, void 0, false, {
                     fileName: "[project]/components/product-grid.tsx",
-                    lineNumber: 142,
+                    lineNumber: 126,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 141,
+                lineNumber: 125,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
@@ -589,12 +655,12 @@ function ProductGrid({ onAddToCart }) {
                                     className: "w-full h-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/components/product-grid.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 133,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 149,
+                                lineNumber: 132,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
@@ -605,7 +671,7 @@ function ProductGrid({ onAddToCart }) {
                                         children: product.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 140,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -613,13 +679,13 @@ function ProductGrid({ onAddToCart }) {
                                         children: product.brand_name || product.category
                                     }, void 0, false, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 159,
+                                        lineNumber: 141,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 157,
+                                lineNumber: 139,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -633,55 +699,27 @@ function ProductGrid({ onAddToCart }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "text-xs text-muted-foreground",
-                                                        children: "Wholesale Price:"
+                                                        children: "Price:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 165,
+                                                        lineNumber: 146,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "font-bold text-primary",
                                                         children: [
                                                             "₵",
-                                                            product.wholesale_price?.toFixed(2) || "N/A"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 166,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/product-grid.tsx",
-                                                lineNumber: 164,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between items-center",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-xs text-muted-foreground",
-                                                        children: "WS + Profit:"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 169,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-sm font-medium text-green-600",
-                                                        children: [
-                                                            "₵",
                                                             product.wholesale_price_with_profit?.toFixed(2) || "N/A"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 170,
+                                                        lineNumber: 147,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/product-grid.tsx",
-                                                lineNumber: 168,
+                                                lineNumber: 145,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -692,7 +730,7 @@ function ProductGrid({ onAddToCart }) {
                                                         children: "Stock:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 175,
+                                                        lineNumber: 150,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -700,19 +738,19 @@ function ProductGrid({ onAddToCart }) {
                                                         children: product.quantity
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 176,
+                                                        lineNumber: 151,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/product-grid.tsx",
-                                                lineNumber: 174,
+                                                lineNumber: 149,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 163,
+                                        lineNumber: 144,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,12 +760,12 @@ function ProductGrid({ onAddToCart }) {
                                             children: product.category
                                         }, void 0, false, {
                                             fileName: "[project]/components/product-grid.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 155,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 180,
+                                        lineNumber: 154,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -736,24 +774,24 @@ function ProductGrid({ onAddToCart }) {
                                         children: "Add to Cart"
                                     }, void 0, false, {
                                         fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 159,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 162,
+                                lineNumber: 143,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, product.id, true, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 147,
+                        lineNumber: 131,
                         columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 145,
+                lineNumber: 129,
                 columnNumber: 9
             }, this),
             !isLoading && filteredProducts.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -763,22 +801,22 @@ function ProductGrid({ onAddToCart }) {
                     children: "No products found matching your search or category."
                 }, void 0, false, {
                     fileName: "[project]/components/product-grid.tsx",
-                    lineNumber: 199,
+                    lineNumber: 173,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 198,
+                lineNumber: 172,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/product-grid.tsx",
-        lineNumber: 93,
+        lineNumber: 79,
         columnNumber: 5
     }, this);
 }
-_s(ProductGrid, "g9j13EqrxH90PcqZzXN+lelNV/Q=");
+_s(ProductGrid, "MOvBSYd1S87Ei1eOZbiEet3fL+s=");
 _c = ProductGrid;
 var _c;
 __turbopack_context__.k.register(_c, "ProductGrid");
@@ -1125,6 +1163,13 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                 fileName: "[project]/components/receipt.tsx",
                                 lineNumber: 73,
                                 columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: "Tel: 0549 241 991/ 0548 048 520"
+                            }, void 0, false, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 75,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
@@ -1149,122 +1194,15 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "Receipt #:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 82,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: receiptNumber
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 82,
                                         columnNumber: 100
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 78,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    justifyContent: "space-between"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Date:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 79,
-                                        columnNumber: 77
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: now.toLocaleDateString()
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 79,
-                                        columnNumber: 95
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 79,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    justifyContent: "space-between"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Time:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 80,
-                                        columnNumber: 77
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: now.toLocaleTimeString()
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 80,
-                                        columnNumber: 95
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 80,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    justifyContent: "space-between"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Cashier:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 81,
-                                        columnNumber: 77
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        style: {
-                                            fontWeight: "bold"
-                                        },
-                                        children: "Benedicta Sarpong"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 81,
-                                        columnNumber: 98
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 81,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    justifyContent: "space-between"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Customer:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 82,
-                                        columnNumber: 77
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: customerName || "Walk-in Customer"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 82,
-                                        columnNumber: 99
                                     }, this)
                                 ]
                             }, void 0, true, {
@@ -1279,29 +1217,136 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Payment:"
+                                        children: "Date:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
                                         lineNumber: 83,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: paymentMethod
+                                        children: now.toLocaleDateString()
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
                                         lineNumber: 83,
-                                        columnNumber: 98
+                                        columnNumber: 95
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
                                 lineNumber: 83,
                                 columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Time:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 84,
+                                        columnNumber: 77
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: now.toLocaleTimeString()
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 84,
+                                        columnNumber: 95
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 84,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Cashier:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 85,
+                                        columnNumber: 77
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            fontWeight: "bold"
+                                        },
+                                        children: "Benedicta Sarpong"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 85,
+                                        columnNumber: 98
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 85,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Customer:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 86,
+                                        columnNumber: 77
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: customerName || "Walk-in Customer"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 86,
+                                        columnNumber: 99
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 86,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Payment:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 87,
+                                        columnNumber: 77
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: paymentMethod
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 87,
+                                        columnNumber: 98
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 87,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 77,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1325,34 +1370,34 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "Item"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 94,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Qty"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 94,
                                         columnNumber: 30
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Price"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 94,
                                         columnNumber: 46
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Total"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 94,
                                         columnNumber: 64
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 88,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, this),
                             items.map((item)=>{
@@ -1374,14 +1419,14 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                             children: item.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 96,
+                                            lineNumber: 101,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: item.quantity
                                         }, void 0, false, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 97,
+                                            lineNumber: 102,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1391,7 +1436,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 98,
+                                            lineNumber: 103,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1404,20 +1449,20 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 99,
+                                            lineNumber: 104,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, item.id, true, {
                                     fileName: "[project]/components/receipt.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 100,
                                     columnNumber: 15
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 87,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1437,7 +1482,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "Subtotal:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 112,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1447,13 +1492,13 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 112,
                                         columnNumber: 99
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 107,
+                                lineNumber: 112,
                                 columnNumber: 11
                             }, this),
                             discount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1471,7 +1516,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 118,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1481,13 +1526,13 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 114,
+                                        lineNumber: 119,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 112,
+                                lineNumber: 117,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1505,7 +1550,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "TOTAL:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 124,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1515,19 +1560,19 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 125,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 118,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 106,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1547,7 +1592,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "Amount Received:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 131,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1557,13 +1602,13 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 131,
                                         columnNumber: 106
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 126,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1578,7 +1623,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         children: "Change:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 132,
                                         columnNumber: 115
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1588,19 +1633,19 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 132,
                                         columnNumber: 135
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 127,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 125,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1613,14 +1658,14 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                 children: "Thank you for your purchase!"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 132,
+                                lineNumber: 137,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: "Please visit us again"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 133,
+                                lineNumber: 138,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1631,13 +1676,13 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
                                 children: "*** END OF RECEIPT ***"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 134,
+                                lineNumber: 139,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 131,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, this)
                 ]
@@ -1666,7 +1711,7 @@ function Receipt({ items, customerName = "", discount = 0, paymentMethod = "cash
       `
             }, void 0, false, {
                 fileName: "[project]/components/receipt.tsx",
-                lineNumber: 139,
+                lineNumber: 144,
                 columnNumber: 7
             }, this)
         ]
@@ -2168,6 +2213,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
     const [receiptAmountReceived, setReceiptAmountReceived] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [paymentError, setPaymentError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [isProcessing, setIsProcessing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isRefreshing, setIsRefreshing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const receiptRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const { transactions: dbTransactions, addTransaction: addTransactionToDB, mutate: mutateTransactions } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$hooks$2f$useTransactions$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransactions"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -2175,6 +2221,24 @@ function CashierPage({ onAddTransaction, onLogout }) {
             mutateTransactions();
         }
     }["CashierPage.useEffect"], []);
+    const refreshProducts = async ()=>{
+        setIsRefreshing(true);
+        try {
+            const res = await fetch("/api/products");
+            const result = await res.json();
+            if (result.success) {
+                // Dispatch event for ProductGrid to listen
+                window.dispatchEvent(new CustomEvent("productsRefresh", {
+                    detail: result.data
+                }));
+            }
+        } catch (err) {
+            console.error("Product refresh error:", err);
+            alert("Failed to refresh products");
+        } finally{
+            setIsRefreshing(false);
+        }
+    };
     const addToCart = (product)=>{
         setCartItems((prev)=>{
             const existing = prev.find((item)=>item.id === product.id);
@@ -2325,6 +2389,20 @@ function CashierPage({ onAddTransaction, onLogout }) {
         };
         return methods[method] || method;
     };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CashierPage.useEffect": ()=>{
+            const handleRefresh = {
+                "CashierPage.useEffect.handleRefresh": (e)=>{
+                    // Re-fetch or update your products state
+                    refreshProducts();
+                }
+            }["CashierPage.useEffect.handleRefresh"];
+            window.addEventListener("productsRefresh", handleRefresh);
+            return ({
+                "CashierPage.useEffect": ()=>window.removeEventListener("productsRefresh", handleRefresh)
+            })["CashierPage.useEffect"];
+        }
+    }["CashierPage.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full min-h-screen bg-background",
         children: [
@@ -2340,7 +2418,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                 className: "w-12 h-12"
                             }, void 0, false, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 241,
+                                lineNumber: 270,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2350,7 +2428,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                         children: "Owoabenes"
                                     }, void 0, false, {
                                         fileName: "[project]/components/cashier-page.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 272,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2358,19 +2436,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                         children: "Mothercare & Kids Boutique"
                                     }, void 0, false, {
                                         fileName: "[project]/components/cashier-page.tsx",
-                                        lineNumber: 244,
+                                        lineNumber: 273,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 242,
+                                lineNumber: 271,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 240,
+                        lineNumber: 269,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2384,7 +2462,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 248,
+                                lineNumber: 277,
                                 columnNumber: 11
                             }, this),
                             !isLogoutEnabled && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2392,19 +2470,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                 children: "Available at 5:00 PM"
                             }, void 0, false, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 257,
+                                lineNumber: 286,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 247,
+                        lineNumber: 276,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/cashier-page.tsx",
-                lineNumber: 239,
+                lineNumber: 268,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2412,24 +2490,49 @@ function CashierPage({ onAddTransaction, onLogout }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "lg:col-span-3 flex flex-col overflow-hidden",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1 overflow-y-auto",
-                            "data-product-grid": true,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$product$2d$grid$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                onAddToCart: addToCart
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex justify-end mb-2",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                    onClick: refreshProducts,
+                                    disabled: isRefreshing,
+                                    className: "bg-primary text-white",
+                                    children: isRefreshing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Refreshing..."
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/cashier-page.tsx",
+                                        lineNumber: 306,
+                                        columnNumber: 17
+                                    }, this) : "🔄 Refresh Products"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/cashier-page.tsx",
+                                    lineNumber: 300,
+                                    columnNumber: 13
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 271,
-                                columnNumber: 13
+                                lineNumber: 299,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex-1 overflow-y-auto",
+                                "data-product-grid": true,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$product$2d$grid$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    onAddToCart: addToCart
+                                }, void 0, false, {
+                                    fileName: "[project]/components/cashier-page.tsx",
+                                    lineNumber: 315,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/cashier-page.tsx",
+                                lineNumber: 314,
+                                columnNumber: 11
                             }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/components/cashier-page.tsx",
-                            lineNumber: 270,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 266,
+                        lineNumber: 295,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2447,7 +2550,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "Checkout"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 280,
+                                            lineNumber: 324,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -2456,7 +2559,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "Stats"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 283,
+                                            lineNumber: 327,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -2465,13 +2568,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "Recent"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 330,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 279,
+                                    lineNumber: 323,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -2490,12 +2593,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             children: "👤 Customer Info"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 297,
+                                                            lineNumber: 341,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 340,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2506,18 +2609,18 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             className: "text-sm border-primary/30 focus:border-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 302,
+                                                            lineNumber: 346,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 301,
+                                                        lineNumber: 345,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 295,
+                                                lineNumber: 339,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2528,12 +2631,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     onUpdateQuantity: updateQuantity
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 313,
+                                                    lineNumber: 357,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 312,
+                                                lineNumber: 356,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2546,7 +2649,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 children: "Order Summary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 323,
+                                                                lineNumber: 367,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2558,13 +2661,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 324,
+                                                                lineNumber: 368,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 322,
+                                                        lineNumber: 366,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2578,7 +2681,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         children: "Subtotal"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 329,
+                                                                        lineNumber: 373,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2589,13 +2692,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 330,
+                                                                        lineNumber: 374,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 328,
+                                                                lineNumber: 372,
                                                                 columnNumber: 21
                                                             }, this),
                                                             discountPercentage > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2609,7 +2712,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 334,
+                                                                        lineNumber: 378,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2620,19 +2723,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 335,
+                                                                        lineNumber: 379,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 333,
+                                                                lineNumber: 377,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 327,
+                                                        lineNumber: 371,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2643,7 +2746,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 children: "Total"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 342,
+                                                                lineNumber: 386,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2654,19 +2757,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 343,
+                                                                lineNumber: 387,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 341,
+                                                        lineNumber: 385,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 321,
+                                                lineNumber: 365,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2679,7 +2782,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 children: "Discount %"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 350,
+                                                                lineNumber: 394,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2695,7 +2798,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         className: "text-sm h-9 text-center"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 352,
+                                                                        lineNumber: 396,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2703,19 +2806,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         children: "%"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 363,
+                                                                        lineNumber: 407,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 351,
+                                                                lineNumber: 395,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 349,
+                                                        lineNumber: 393,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2725,7 +2828,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 children: "Payment"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 368,
+                                                                lineNumber: 412,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2736,12 +2839,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         className: "text-sm h-9",
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 371,
+                                                                            lineNumber: 415,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 370,
+                                                                        lineNumber: 414,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2751,7 +2854,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 children: "💵 Cash"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 374,
+                                                                                lineNumber: 418,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2759,7 +2862,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 children: "💳 Card"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 375,
+                                                                                lineNumber: 419,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2767,7 +2870,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 children: "📱 Momo"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 376,
+                                                                                lineNumber: 420,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2775,31 +2878,31 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 children: "📋 Check"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 377,
+                                                                                lineNumber: 421,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 373,
+                                                                        lineNumber: 417,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 369,
+                                                                lineNumber: 413,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 367,
+                                                        lineNumber: 411,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 348,
+                                                lineNumber: 392,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2814,42 +2917,42 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             variant: "primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 391,
+                                                            lineNumber: 435,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Processing..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 392,
+                                                            lineNumber: 436,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 390,
+                                                    lineNumber: 434,
                                                     columnNumber: 21
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "💰 Proceed to Payment"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 395,
+                                                    lineNumber: 439,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 384,
+                                                lineNumber: 428,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/cashier-page.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 337,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 292,
+                                    lineNumber: 336,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -2866,12 +2969,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                         children: "Today's Performance"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 405,
+                                                        lineNumber: 449,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 404,
+                                                    lineNumber: 448,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2888,7 +2991,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             children: "Transactions"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 410,
+                                                                            lineNumber: 454,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2896,13 +2999,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             children: dbTransactions.length
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 411,
+                                                                            lineNumber: 455,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 409,
+                                                                    lineNumber: 453,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2913,7 +3016,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             children: "Total Revenue"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 414,
+                                                                            lineNumber: 458,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2924,19 +3027,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 415,
+                                                                            lineNumber: 459,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 413,
+                                                                    lineNumber: 457,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 408,
+                                                            lineNumber: 452,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2947,7 +3050,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     children: "Average Sale"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 421,
+                                                                    lineNumber: 465,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2958,13 +3061,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 422,
+                                                                    lineNumber: 466,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 420,
+                                                            lineNumber: 464,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2975,7 +3078,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     children: "Items Sold"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 432,
+                                                                    lineNumber: 476,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2983,25 +3086,25 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     children: dbTransactions.reduce((sum, t)=>sum + (t.items?.length || 0), 0)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 433,
+                                                                    lineNumber: 477,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 431,
+                                                            lineNumber: 475,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 407,
+                                                    lineNumber: 451,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 403,
+                                            lineNumber: 447,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -3014,12 +3117,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                         children: "Top Sellers Today"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 443,
+                                                        lineNumber: 487,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 442,
+                                                    lineNumber: 486,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3042,7 +3145,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             children: name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 461,
+                                                                            lineNumber: 505,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3053,36 +3156,36 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                                            lineNumber: 462,
+                                                                            lineNumber: 506,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, name, true, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 460,
+                                                                    lineNumber: 504,
                                                                     columnNumber: 27
                                                                 }, this));
                                                         })()
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 446,
+                                                        lineNumber: 490,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 445,
+                                                    lineNumber: 489,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 441,
+                                            lineNumber: 485,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 402,
+                                    lineNumber: 446,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -3098,12 +3201,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Recent Transactions"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 475,
+                                                    lineNumber: 519,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 474,
+                                                lineNumber: 518,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3114,7 +3217,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                         children: "No transactions yet"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 480,
+                                                        lineNumber: 524,
                                                         columnNumber: 23
                                                     }, this) : dbTransactions.slice().reverse().slice(0, 10).map((transaction, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "bg-muted p-2 rounded border-l-2 border-green-600",
@@ -3129,7 +3232,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 children: transaction.customer_name || "Walk-in"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 490,
+                                                                                lineNumber: 534,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3140,21 +3243,25 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 493,
+                                                                                lineNumber: 537,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                                 className: "text-[10px] text-muted-foreground",
-                                                                                children: new Date(transaction.timestamp || transaction.created_at).toLocaleTimeString()
-                                                                            }, void 0, false, {
+                                                                                children: [
+                                                                                    new Date(transaction.timestamp || transaction.created_at).toLocaleTimeString(),
+                                                                                    " ",
+                                                                                    new Date(transaction.timestamp || transaction.created_at).toLocaleDateString()
+                                                                                ]
+                                                                            }, void 0, true, {
                                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                                lineNumber: 494,
+                                                                                lineNumber: 538,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 489,
+                                                                        lineNumber: 533,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3165,50 +3272,50 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                                        lineNumber: 498,
+                                                                        lineNumber: 543,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 488,
+                                                                lineNumber: 532,
                                                                 columnNumber: 29
                                                             }, this)
                                                         }, idx, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 487,
+                                                            lineNumber: 531,
                                                             columnNumber: 27
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 478,
+                                                    lineNumber: 522,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 477,
+                                                lineNumber: 521,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/cashier-page.tsx",
-                                        lineNumber: 473,
+                                        lineNumber: 517,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 472,
+                                    lineNumber: 516,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/cashier-page.tsx",
-                            lineNumber: 278,
+                            lineNumber: 322,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 276,
+                        lineNumber: 320,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3224,7 +3331,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 512,
+                                lineNumber: 557,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3236,18 +3343,18 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                     variant: "primary"
                                 }, void 0, false, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 520,
+                                    lineNumber: 565,
                                     columnNumber: 29
                                 }, this) : "Checkout"
                             }, void 0, false, {
                                 fileName: "[project]/components/cashier-page.tsx",
-                                lineNumber: 515,
+                                lineNumber: 560,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 511,
+                        lineNumber: 556,
                         columnNumber: 9
                     }, this),
                     showCheckoutPanel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3255,7 +3362,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                         onClick: ()=>setShowCheckoutPanel(false)
                     }, void 0, false, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 526,
+                        lineNumber: 571,
                         columnNumber: 11
                     }, this),
                     showCheckoutPanel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3271,7 +3378,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "Your Cart"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 532,
+                                            lineNumber: 577,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3280,13 +3387,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "✕"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 533,
+                                            lineNumber: 578,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 531,
+                                    lineNumber: 576,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3300,7 +3407,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Customer Info"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 540,
+                                                    lineNumber: 585,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -3310,13 +3417,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     className: "text-sm"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 541,
+                                                    lineNumber: 586,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 539,
+                                            lineNumber: 584,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shopping$2d$cart$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -3325,7 +3432,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             onUpdateQuantity: updateQuantity
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 549,
+                                            lineNumber: 594,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3336,7 +3443,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Discount & Payment"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 552,
+                                                    lineNumber: 597,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3349,7 +3456,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     children: "Discount (%)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 555,
+                                                                    lineNumber: 600,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -3362,13 +3469,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     className: "text-sm"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 556,
+                                                                    lineNumber: 601,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 554,
+                                                            lineNumber: 599,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3379,7 +3486,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     children: "Total Due"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 570,
+                                                                    lineNumber: 615,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3390,42 +3497,42 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                                    lineNumber: 571,
+                                                                    lineNumber: 616,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 569,
+                                                            lineNumber: 614,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 553,
+                                                    lineNumber: 598,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 551,
+                                            lineNumber: 596,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 538,
+                                    lineNumber: 583,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/cashier-page.tsx",
-                            lineNumber: 530,
+                            lineNumber: 575,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 529,
+                        lineNumber: 574,
                         columnNumber: 11
                     }, this),
                     showPaymentConfirm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3441,7 +3548,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "💳 Payment Confirmation"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 584,
+                                            lineNumber: 629,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3449,13 +3556,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             children: "Review and complete your payment"
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 585,
+                                            lineNumber: 630,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 583,
+                                    lineNumber: 628,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3472,7 +3579,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             children: "Subtotal"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 591,
+                                                            lineNumber: 636,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3483,13 +3590,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 592,
+                                                            lineNumber: 637,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 590,
+                                                    lineNumber: 635,
                                                     columnNumber: 19
                                                 }, this),
                                                 discountPercentage > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3503,7 +3610,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 596,
+                                                            lineNumber: 641,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3514,13 +3621,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 597,
+                                                            lineNumber: 642,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 595,
+                                                    lineNumber: 640,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3530,7 +3637,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             children: "Total Due"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 601,
+                                                            lineNumber: 646,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3541,19 +3648,19 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/cashier-page.tsx",
-                                                            lineNumber: 602,
+                                                            lineNumber: 647,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 600,
+                                                    lineNumber: 645,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 589,
+                                            lineNumber: 634,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3564,7 +3671,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Amount Received"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 608,
+                                                    lineNumber: 653,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -3575,13 +3682,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     className: "text-lg font-semibold border-primary/30 focus:border-primary h-12"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 609,
+                                                    lineNumber: 654,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 607,
+                                            lineNumber: 652,
                                             columnNumber: 17
                                         }, this),
                                         amountReceived && Number.parseFloat(amountReceived) >= totalAmount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3592,7 +3699,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Change Due"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 621,
+                                                    lineNumber: 666,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3603,13 +3710,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 624,
+                                                    lineNumber: 669,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 620,
+                                            lineNumber: 665,
                                             columnNumber: 19
                                         }, this),
                                         paymentError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3622,12 +3729,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 633,
+                                                lineNumber: 678,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 632,
+                                            lineNumber: 677,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3641,7 +3748,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 639,
+                                                    lineNumber: 684,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3655,48 +3762,48 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                                 size: "sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 654,
+                                                                lineNumber: 699,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 children: "Processing..."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                                lineNumber: 655,
+                                                                lineNumber: 700,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/cashier-page.tsx",
-                                                        lineNumber: 653,
+                                                        lineNumber: 698,
                                                         columnNumber: 23
                                                     }, this) : "✓ Complete Payment"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 647,
+                                                    lineNumber: 692,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 638,
+                                            lineNumber: 683,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 587,
+                                    lineNumber: 632,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/cashier-page.tsx",
-                            lineNumber: 582,
+                            lineNumber: 627,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 581,
+                        lineNumber: 626,
                         columnNumber: 11
                     }, this),
                     showReceipt && lastTransaction.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3711,12 +3818,12 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                         children: "Receipt"
                                     }, void 0, false, {
                                         fileName: "[project]/components/cashier-page.tsx",
-                                        lineNumber: 672,
+                                        lineNumber: 717,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 671,
+                                    lineNumber: 716,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3727,22 +3834,20 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                             className: "flex-1",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$receipt$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                 items: lastTransaction,
-                                                subtotal: lastTransaction.reduce((sum, item)=>sum + item.subtotal, 0),
                                                 discount: lastTransaction.reduce((sum, item)=>sum + item.subtotal, 0) * discountPercentage / 100,
-                                                total: totalAmount,
                                                 customerName: receiptCustomerName,
-                                                cashierName: "Owoabenes",
+                                                cashierName: "Benedicta Sarpong",
                                                 amountReceived: receiptAmountReceived,
                                                 change: receiptAmountReceived - totalAmount,
                                                 paymentMethod: formatPaymentMethod(selectedPaymentMethod)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/cashier-page.tsx",
-                                                lineNumber: 676,
+                                                lineNumber: 721,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 675,
+                                            lineNumber: 720,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3755,7 +3860,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Close"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 691,
+                                                    lineNumber: 734,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -3764,46 +3869,46 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "🖨️ Print"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 694,
+                                                    lineNumber: 737,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 690,
+                                            lineNumber: 733,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/cashier-page.tsx",
-                                    lineNumber: 674,
+                                    lineNumber: 719,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/cashier-page.tsx",
-                            lineNumber: 670,
+                            lineNumber: 715,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/cashier-page.tsx",
-                        lineNumber: 669,
+                        lineNumber: 714,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/cashier-page.tsx",
-                lineNumber: 264,
+                lineNumber: 293,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/cashier-page.tsx",
-        lineNumber: 237,
+        lineNumber: 266,
         columnNumber: 5
     }, this);
 }
-_s(CashierPage, "OGfXArwyaoEkrHZM6P2lOK36lGU=", false, function() {
+_s(CashierPage, "R1GVMHmvj4rOPmQ7sg5FIXe4cc0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$hooks$2f$useTransactions$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTransactions"]
     ];
@@ -3815,633 +3920,8 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/components/admin-page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/components/admin-page.tsx [app-client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>AdminPage
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/tabs.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/loading-spinner.tsx [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-"use client";
-;
-;
-;
-;
-;
-;
-function AdminPage({ onLogout }) {
-    _s();
-    const [selectedTransaction, setSelectedTransaction] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [activeTab, setActiveTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("dashboard");
-    const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [staff, setStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [isLoadingProducts, setIsLoadingProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isLoadingStaff, setIsLoadingStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [transactions, setTransactions] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [isLoadingTransactions, setIsLoadingTransactions] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isAddingProduct, setIsAddingProduct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [isAddingStaff, setIsAddingStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [productSearch, setProductSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminPage.useEffect": ()=>{
-            fetchProducts();
-            fetchStaff();
-            fetchTransactions();
-        }
-    }["AdminPage.useEffect"], []);
-    const fetchProducts = async ()=>{
-        try {
-            setIsLoadingProducts(true);
-            const res = await fetch("/api/products");
-            const result = await res.json();
-            if (result.success) {
-                setProducts(result.data || []);
-            }
-        } catch (error) {
-            console.error("[v0] Error fetching products:", error);
-        } finally{
-            setIsLoadingProducts(false);
-        }
-    };
-    const fetchStaff = async ()=>{
-        try {
-            setIsLoadingStaff(true);
-            const res = await fetch("/api/staff");
-            const result = await res.json();
-            if (result.success) {
-                setStaff(result.data || []);
-            }
-        } catch (error) {
-            console.error("[v0] Error fetching staff:", error);
-        } finally{
-            setIsLoadingStaff(false);
-        }
-    };
-    const fetchTransactions = async ()=>{
-        try {
-            setIsLoadingTransactions(true);
-            const res = await fetch("/api/transactions");
-            const result = await res.json();
-            if (result.success) {
-                const formattedTransactions = result.data?.map((t)=>({
-                        id: t.id,
-                        date: new Date(t.created_at).toLocaleString(),
-                        total: t.total,
-                        itemCount: t.items?.length || 0,
-                        items: t.items || [],
-                        discount: t.discount || 0,
-                        paymentMethod: t.payment_method || "cash",
-                        customerName: t.customer_name,
-                        amountReceived: t.amount_received
-                    })) || [];
-                setTransactions(formattedTransactions);
-            }
-        } catch (error) {
-            console.error("[v0] Error fetching transactions:", error);
-        } finally{
-            setIsLoadingTransactions(false);
-        }
-    };
-    const [showAddProduct, setShowAddProduct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [showAddStaff, setShowAddStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [newProduct, setNewProduct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        name: "",
-        category: "",
-        wholesale_price: 0,
-        wholesale_price_with_profit: 0,
-        quantity: 0,
-        min_stock: 0,
-        brand_name: "",
-        expiry_date: "",
-        description: "",
-        image: ""
-    });
-    const [imagePreview, setImagePreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [newStaff, setNewStaff] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        name: "",
-        role: "",
-        email: ""
-    });
-    const handleImageUpload = (e)=>{
-        const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = ()=>{
-                const base64String = reader.result;
-                setNewProduct({
-                    ...newProduct,
-                    image: base64String
-                });
-                setImagePreview(base64String);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    const handleAddProduct = async ()=>{
-        if (newProduct.name && newProduct.category && newProduct.wholesale_price && newProduct.wholesale_price_with_profit && newProduct.quantity !== undefined) {
-            setIsAddingProduct(true);
-            const productData = {
-                ...newProduct,
-                price: newProduct.wholesale_price,
-                quantity: newProduct.quantity || 0,
-                min_stock: newProduct.min_stock || 0
-            };
-            try {
-                const res = await fetch("/api/products", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(productData)
-                });
-                const result = await res.json();
-                if (result.success) {
-                    setProducts([
-                        ...products,
-                        result.data
-                    ]);
-                    setNewProduct({
-                        name: "",
-                        category: "",
-                        wholesale_price: 0,
-                        wholesale_price_with_profit: 0,
-                        quantity: 0,
-                        min_stock: 0,
-                        brand_name: "",
-                        expiry_date: "",
-                        description: "",
-                        image: ""
-                    });
-                    setImagePreview(null);
-                    setShowAddProduct(false);
-                    console.log("[v0] Product added successfully");
-                } else {
-                    console.error("[v0] Error adding product:", result.error);
-                }
-            } catch (error) {
-                console.error("[v0] Error adding product:", error);
-            } finally{
-                setIsAddingProduct(false);
-            }
-        }
-    };
-    const handleAddStaff = async ()=>{
-        if (newStaff.name && newStaff.role && newStaff.email) {
-            setIsAddingStaff(true);
-            const staffData = {
-                name: newStaff.name,
-                role: newStaff.role,
-                email: newStaff.email,
-                join_date: new Date().toISOString().split("T")[0]
-            };
-            try {
-                const res = await fetch("/api/staff", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(staffData)
-                });
-                const result = await res.json();
-                if (result.success) {
-                    await fetchStaff();
-                    setNewStaff({
-                        name: "",
-                        role: "",
-                        email: ""
-                    });
-                    setShowAddStaff(false);
-                    setActiveTab("staff");
-                    console.log("[v0] Staff added successfully");
-                } else {
-                    console.error("[v0] Error adding staff:", result.error);
-                }
-            } catch (error) {
-                console.error("[v0] Error adding staff:", error);
-            } finally{
-                setIsAddingStaff(false);
-            }
-        }
-    };
-    const filteredTransactions = transactions.filter((t)=>t.id.toLowerCase().includes(searchTerm.toLowerCase()) || t.customerName && t.customerName.toLowerCase().includes(searchTerm.toLowerCase()));
-    const totalRevenue = transactions.reduce((sum, t)=>sum + t.total, 0);
-    const totalProfit = transactions.reduce((sum, transaction)=>{
-        const transactionProfit = transaction.items.reduce((itemSum, item)=>{
-            const profitPerUnit = (item.price || 0) - (item.cost_price || 0);
-            const itemProfit = profitPerUnit * (item.quantity || 0);
-            return itemSum + itemProfit;
-        }, 0);
-        return sum + transactionProfit;
-    }, 0);
-    const lowStockProducts = products.filter((p)=>p.quantity <= p.min_stock && p.quantity > 0);
-    const outOfStockProducts = products.filter((p)=>p.quantity === 0);
-    const paymentMethodStats = {
-        cash: transactions.filter((t)=>t.paymentMethod === "cash").length,
-        card: transactions.filter((t)=>t.paymentMethod === "card").length,
-        momo: transactions.filter((t)=>t.paymentMethod === "momo").length,
-        check: transactions.filter((t)=>t.paymentMethod === "check").length
-    };
-    const stats = {
-        totalTransactions: transactions.length,
-        totalRevenue: totalRevenue.toFixed(2),
-        averageTransaction: (totalRevenue / Math.max(transactions.length, 1)).toFixed(2),
-        totalProfit: totalProfit.toFixed(2),
-        totalItemsSold: transactions.reduce((sum, t)=>sum + (t.items?.reduce((itemSum, item)=>itemSum + item.quantity, 0) || 0), 0)
-    };
-    const filteredProducts = products.filter((p)=>p.name.toLowerCase().includes(productSearch.toLowerCase()) || p.category.toLowerCase().includes(productSearch.toLowerCase()) || p.brand_name.toLowerCase().includes(productSearch.toLowerCase()));
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-muted p-4",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "max-w-7xl mx-auto",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex items-center justify-between mb-6",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center gap-3",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: "/noback.png",
-                                    alt: "Logo",
-                                    className: "w-14 h-14"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 299,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                            className: "text-3xl font-bold text-primary",
-                                            children: "Admin Dashboard"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/admin-page.tsx",
-                                            lineNumber: 301,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-sm text-muted-foreground",
-                                            children: "Owoabenes Mothercare & Kids Boutique"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/admin-page.tsx",
-                                            lineNumber: 302,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 300,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/admin-page.tsx",
-                            lineNumber: 298,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                            onClick: onLogout,
-                            className: "bg-destructive hover:bg-destructive/90 text-destructive-foreground",
-                            children: "Logout"
-                        }, void 0, false, {
-                            fileName: "[project]/components/admin-page.tsx",
-                            lineNumber: 305,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/admin-page.tsx",
-                    lineNumber: 297,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tabs"], {
-                    value: activeTab,
-                    onValueChange: setActiveTab,
-                    className: "w-full",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsList"], {
-                            className: "grid w-full grid-cols-5",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
-                                    value: "dashboard",
-                                    children: "Dashboard"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 312,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
-                                    value: "inventory",
-                                    children: "Inventory"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 313,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
-                                    value: "products",
-                                    children: "Products"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 314,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
-                                    value: "staff",
-                                    children: "Staff"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 315,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
-                                    value: "transactions",
-                                    children: "Transactions"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 316,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/admin-page.tsx",
-                            lineNumber: 311,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
-                            value: "products",
-                            className: "mt-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                    className: "mb-6",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex justify-between items-center",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                    children: "Product Management"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/admin-page.tsx",
-                                                    lineNumber: 324,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                    onClick: ()=>setShowAddProduct(!showAddProduct),
-                                                    className: "bg-primary hover:bg-primary/90",
-                                                    children: showAddProduct ? "Cancel" : "+ Add Product"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/admin-page.tsx",
-                                                    lineNumber: 325,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/admin-page.tsx",
-                                            lineNumber: 323,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/admin-page.tsx",
-                                        lineNumber: 322,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 321,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between items-center w-full",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                                        children: "All Products"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/admin-page.tsx",
-                                                        lineNumber: 337,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                        placeholder: "Search products...",
-                                                        value: productSearch,
-                                                        onChange: (e)=>setProductSearch(e.target.value),
-                                                        className: "w-48"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/admin-page.tsx",
-                                                        lineNumber: 338,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/admin-page.tsx",
-                                                lineNumber: 336,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/admin-page.tsx",
-                                            lineNumber: 335,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3",
-                                                children: isLoadingProducts ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-center py-8",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                        size: "md",
-                                                        variant: "primary",
-                                                        label: "Loading products..."
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/admin-page.tsx",
-                                                        lineNumber: 350,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/admin-page.tsx",
-                                                    lineNumber: 349,
-                                                    columnNumber: 21
-                                                }, this) : filteredProducts.length > 0 ? filteredProducts.map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                                                        className: "overflow-hidden p-2 text-xs",
-                                                        children: [
-                                                            product.image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                src: product.image || "/placeholder.svg",
-                                                                alt: product.name,
-                                                                className: "w-full h-28 object-cover rounded"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/admin-page.tsx",
-                                                                lineNumber: 356,
-                                                                columnNumber: 27
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                                                className: "p-2",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                        className: "font-bold text-sm",
-                                                                        children: product.name
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                        lineNumber: 363,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                        className: "text-[10px] text-muted-foreground",
-                                                                        children: product.brand_name
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                        lineNumber: 364,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                        className: "text-[10px] text-muted-foreground mb-1",
-                                                                        children: [
-                                                                            "Stock: ",
-                                                                            product.quantity
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                        lineNumber: 365,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "space-y-0 text-[10px]",
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "font-semibold",
-                                                                                        children: "Wholesale:"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                                        lineNumber: 368,
-                                                                                        columnNumber: 31
-                                                                                    }, this),
-                                                                                    " GHS ",
-                                                                                    product.wholesale_price
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/components/admin-page.tsx",
-                                                                                lineNumber: 367,
-                                                                                columnNumber: 29
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "font-semibold",
-                                                                                        children: "Wholesale + Profit:"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                                        lineNumber: 371,
-                                                                                        columnNumber: 31
-                                                                                    }, this),
-                                                                                    " GHS",
-                                                                                    " ",
-                                                                                    product.wholesale_price_with_profit
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/components/admin-page.tsx",
-                                                                                lineNumber: 370,
-                                                                                columnNumber: 29
-                                                                            }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "font-semibold",
-                                                                                        children: "Profit/Unit:"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                                        lineNumber: 375,
-                                                                                        columnNumber: 31
-                                                                                    }, this),
-                                                                                    " GHS",
-                                                                                    " ",
-                                                                                    (product.wholesale_price_with_profit - product.wholesale_price).toFixed(2)
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/components/admin-page.tsx",
-                                                                                lineNumber: 374,
-                                                                                columnNumber: 29
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/components/admin-page.tsx",
-                                                                        lineNumber: 366,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/components/admin-page.tsx",
-                                                                lineNumber: 362,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        ]
-                                                    }, product.id, true, {
-                                                        fileName: "[project]/components/admin-page.tsx",
-                                                        lineNumber: 354,
-                                                        columnNumber: 23
-                                                    }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-muted-foreground",
-                                                    children: "No products found"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/components/admin-page.tsx",
-                                                    lineNumber: 383,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/admin-page.tsx",
-                                                lineNumber: 347,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/admin-page.tsx",
-                                            lineNumber: 346,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/admin-page.tsx",
-                                    lineNumber: 334,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/admin-page.tsx",
-                            lineNumber: 320,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/admin-page.tsx",
-                    lineNumber: 310,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/components/admin-page.tsx",
-            lineNumber: 295,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "[project]/components/admin-page.tsx",
-        lineNumber: 294,
-        columnNumber: 5
-    }, this);
-}
-_s(AdminPage, "mBF08+gI916ich2em9CqBplFEcA=");
-_c = AdminPage;
-var _c;
-__turbopack_context__.k.register(_c, "AdminPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -4475,7 +3955,7 @@ function LoginPage({ onLogin }) {
     const [isLoadingAdmin, setIsLoadingAdmin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const getCurrentHour = ()=>new Date().getHours();
     const shopOpen = 8;
-    const shopClose = 17 // 5 PM in 24-hour format
+    const shopClose = 20 // 8 PM in 24-hour format
     ;
     const currentHour = getCurrentHour();
     const isShopOpen = currentHour >= shopOpen && currentHour < shopClose;
@@ -4493,7 +3973,7 @@ function LoginPage({ onLogin }) {
             if (currentHour < shopOpen) {
                 setError(`Shop opens at 8:00 AM. Please return in ${timeUntilOpen} hour(s).`);
             } else {
-                setError(`Shop closed at 5:00 PM. Please return tomorrow at 8:00 AM.`);
+                setError(`Shop closed at 8:00 PM. Please return tomorrow at 8:00 AM.`);
             }
             setIsLoadingCashier(false);
             return;
@@ -4562,7 +4042,7 @@ function LoginPage({ onLogin }) {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-foreground",
-                                    children: "8:00 AM - 5:00 PM    MON - SAT"
+                                    children: "8:00 AM - 8:00 PM    MON - SAT"
                                 }, void 0, false, {
                                     fileName: "[project]/components/login-page.tsx",
                                     lineNumber: 68,

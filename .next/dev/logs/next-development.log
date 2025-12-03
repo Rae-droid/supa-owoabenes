@@ -1,668 +1,57 @@
-[00:00:15.610] Server  LOG      ✓ Ready in 11.6s
-[00:00:18.648] Server  LOG      ○ Compiling / ...
-[00:00:30.754] Server  ERROR    ⨯ ./components/admin-page.tsx:936:1
-Parsing ecmascript source code failed
-  934 |
-  935 |
-> 936 | }  )    </div>      </div>        </Tabs>          </TabsContent>            )}              </Card>                </CardContent>                </CardContent>
-      | ^
-  937 |               </Card>
-  938 |             )}
-  939 |           </TabsContent>
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-
-./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:00:33.809] Server  LOG      ○ Compiling /_error ...
-[00:00:35.906] Browser ERROR   uncaughtError: Error: ./components/admin-page.tsx:936:1
-Parsing ecmascript source code failed
-  934 |
-  935 |
-> 936 | }  )    </div>      </div>        </Tabs>          </TabsContent>            )}              </Card>                </CardContent>                </CardContent>
-      | ^
-  937 |               </Card>
-  938 |             )}
-  939 |           </TabsContent>
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:00:36.329] Browser ERROR   ./components/admin-page.tsx:936:1
-Parsing ecmascript source code failed
-  934 |
-  935 |
-> 936 | }  )    </div>      </div>        </Tabs>          </TabsContent>            )}              </Card>                </CardContent>                </CardContent>
-      | ^
-  937 |               </Card>
-  938 |             )}
-  939 |           </TabsContent>
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:00:36.330] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:00:37.099] Browser ERROR   ./components/admin-page.tsx:936:1
-Parsing ecmascript source code failed
-  934 |
-  935 |
-> 936 | }  )    </div>      </div>        </Tabs>          </TabsContent>            )}              </Card>                </CardContent>                </CardContent>
-      | ^
-  937 |               </Card>
-  938 |             )}
-  939 |           </TabsContent>
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:00:37.099] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:01:24.397] Browser ERROR   ./components/admin-page.tsx:945:1
-Parsing ecmascript source code failed
-  943 |   )
-  944 | } */}
-> 945 |
-      | ^
-
-Expected '</', got '<eof>'
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:01:24.397] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:01:39.743] Browser ERROR   ./components/admin-page.tsx:936:1
-Parsing ecmascript source code failed
-  934 |
-  935 |
-> 936 | }  )    </div>      </div>        </Tabs>          </TabsContent>            )}              </Card>                </CardContent>                </CardContent>
-      | ^
-  937 |               </Card>
-  938 |             )}
-  939 |           </TabsContent>
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:01:39.743] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:02:59.307] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:03:04.014] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:03:18.602] Server  ERROR    ⨯ ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:03:19.358] Browser ERROR   uncaughtError: Error: ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:03:19.664] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:03:19.664] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:05:51.353] Server  LOG      ✓ Compiled in 480ms
-[00:05:55.150] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:29.510] Server  LOG      ✓ Compiled in 556ms
-[00:06:29.652] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:06:35.319] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:06:52.540] Server  ERROR    ⨯ ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:06:52.764] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:06:53.341] Browser ERROR   uncaughtError: Error: ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-
-
-[00:06:53.657] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:06:53.657] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100)
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:07:34.902] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100);
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:07:46.902] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 200);
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:07:50.902] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100);
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:07:53.903] Browser ERROR   ./components/cashier-page.tsx:130:10
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     } 100);
-      |          ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expected ';', '}' or <eof>
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:07:56.902] Browser ERROR   ./components/cashier-page.tsx:130:6
-Parsing ecmascript source code failed
-  128 |           })
-  129 |           .catch((err) => console.error("[v0] Error refetching products:", err))
-> 130 |     }, 100);
-      |      ^
-  131 |   }
-  132 |
-  133 |   const removeFromCart = (id: string) => {
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./components/cashier-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/cashier-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[00:08:11.824] Server  LOG      ✓ Compiled in 328ms
-[00:08:14.314] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:22.592] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:33.989] Server  LOG      ○ Compiling /api/products ...
-[00:09:31.857] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:01.787] Server  LOG      ✓ Compiled in 313ms
-[00:17:38.949] Server  LOG      ✓ Compiled in 426ms
-[00:18:05.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:05.807] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:02.393] Server  LOG      ✓ Ready in 1488ms
+[00:00:24.323] Server  LOG      ○ Compiling / ...
+[00:00:39.409] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:20.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:34.066] Server  LOG      ○ Compiling /api/products ...
+[00:01:57.651] Browser ERROR   [v0] Error deleting product: {}
+[00:05:35.079] Server  LOG      ✓ Compiled in 1446ms
+[00:06:17.004] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:37.707] Browser ERROR   [v0] Error deleting product: {}
+[00:09:50.973] Server  LOG      ✓ Compiled in 539ms
+[00:10:02.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:19.683] Browser ERROR   [v0] Error deleting product: {}
+[00:10:32.062] Server  LOG      ✓ Compiled in 363ms
+[00:16:38.414] Server  LOG      ✓ Compiled in 541ms
+[00:16:47.454] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:19.851] Browser ERROR   [v0] Error deleting product: Unknown error
+[00:21:58.589] Server  LOG      ✓ Compiled in 601ms
+[00:22:48.949] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:23.398] Server  ERROR   [v0] Error fetching products: {}
+[00:23:23.427] Server  ERROR   [v0] Error fetching staff: {}
+[00:23:23.442] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:23:23.615] Server  ERROR   [v0] Error fetching products: {}
+[00:23:23.628] Server  ERROR   [v0] Error fetching staff: {}
+[00:23:23.667] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:23:23.707] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
+[00:23:23.707] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
+[00:23:23.707] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
+[00:23:23.883] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
+[00:23:23.883] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
+[00:23:23.884] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
+[00:24:50.178] Server  LOG      ✓ Compiled in 418ms
+[00:25:18.515] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:24.856] Server  ERROR   [v0] Error fetching products: {}
+[00:25:24.893] Server  ERROR   [v0] Error fetching staff: {}
+[00:25:24.934] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:25:24.980] Server  ERROR   [v0] Error fetching products: {}
+[00:25:25.012] Server  ERROR   [v0] Error fetching staff: {}
+[00:25:25.053] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:25:25.162] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
+[00:25:25.162] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
+[00:25:25.162] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
+[00:25:25.324] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
+[00:25:25.324] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
+[00:25:25.324] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
+[00:25:38.474] Server  LOG      ✓ Compiled in 416ms
+[00:25:47.413] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:54.999] Server  ERROR   [v0] Error fetching products: {}
+[00:25:55.034] Server  ERROR   [v0] Error fetching staff: {}
+[00:25:55.078] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:25:55.116] Server  ERROR   [v0] Error fetching products: {}
+[00:25:55.156] Server  ERROR   [v0] Error fetching staff: {}
+[00:25:55.208] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
+[00:26:43.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:44.589] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -705,10 +94,124 @@ It can also happen if the client has a browser extension installed which messes 
           ...
         ...
 
-[00:19:10.224] Browser ERROR   [v0] Error deleting product: {}
-[00:19:18.467] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:48:22.245] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:50:45.529] Server  LOG      ✓ Compiled in 483ms
-[00:50:58.443] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:51:31.093] Browser LOG     [v0] Product added successfully
-[00:51:36.066] Browser ERROR   [v0] Error deleting product: {}
+[00:27:00.484] Server  LOG      ✓ Compiled in 311ms
+[00:27:02.617] Server  LOG      ✓ Compiled in 323ms
+[00:27:09.520] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:30.144] Browser ERROR   [v0] Error deleting product: status 404
+[01:04:23.440] Server  LOG      ✓ Compiled in 1160ms
+[01:04:25.542] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
+[01:04:26.424] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
+[01:04:29.559] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:31.155] Browser ERROR   uncaughtError: ReferenceError: CardContent is not defined
+[01:05:27.051] Server  LOG      ✓ Compiled in 637ms
+[01:05:27.100] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:05:27.107] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/admin-page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:05:27.122] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:05:29.194] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
+[01:05:30.623] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
+[01:05:34.371] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:05:36.158] Browser ERROR   uncaughtError: ReferenceError: CardContent is not defined
+[01:05:54.035] Server  LOG      ✓ Compiled in 477ms
+[01:05:55.144] Browser ERROR   ./components/admin-page.tsx:74:45
+Parsing ecmascript source code failed
+  72 |                     </div>
+  73 |                   </div>
+> 74 |                 </CardContent> <CardContent className="space-y-4">
+     |                                             ^^^^^^^^^
+  75 |                   <div className="grid grid-cols-2 gap-4">
+  76 |                     <div>
+  77 |                       <p className="text-xs text-muted-foreground">Receipt Number</p>
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./components/admin-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/admin-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:05:56.142] Browser ERROR   ./components/admin-page.tsx:74:45
+Parsing ecmascript source code failed
+  72 |                     </div>
+  73 |                   </div>
+> 74 |                 </CardContent> <CardContent className="space-y-4">
+     |                                             ^^^^^^^^^
+  75 |                   <div className="grid grid-cols-2 gap-4">
+  76 |                     <div>
+  77 |                       <p className="text-xs text-muted-foreground">Receipt Number</p>
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./components/admin-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/admin-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[01:06:01.249] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:06:01.253] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/admin-page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:06:01.256] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:06:01.264] Server  LOG      ✓ Compiled in 607ms
+[01:06:06.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:07:24.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:07:26.126] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+              <Home params={Promise} searchParams={Promise}>
+                <LoginPage onLogin={function bound dispatchSetState}>
+                  <div className="min-h-scre...">
+                    <Card className="w-full max...">
+                      <div data-slot="card" className="bg-card te...">
+                        <CardHeader>
+                        <CardContent className="space-y-4">
+                          <div data-slot="card-content" className="px-6 space...">
+                            <div>
+                              <label>
+                              <input
+                                type="password"
+                                value=""
+                                onChange={function onChange}
+                                placeholder="Enter password"
+                                className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:r..."
+                                onKeyPress={function onKeyPress}
+                                disabled={false}
+-                               data-has-listeners="true"
+                              >
+                            ...
+          ...
+        ...
+
+[01:07:55.604] Server  LOG      ✓ Compiled in 451ms
+[01:08:08.269] Browser ERROR   [v0] Error deleting product: Unknown error
+[01:11:04.777] Server  LOG        Reload env: .env.local
+[01:11:45.954] Server  LOG        Reload env: .env.local
+[01:11:49.196] Server  LOG        Reload env: .env.local
+[01:12:02.194] Server  LOG        Reload env: .env.local
+[01:12:13.586] Server  LOG        Reload env: .env.local
+[01:16:22.899] Server  LOG      ✓ Compiled in 247ms
+[01:16:34.837] Server  LOG      ✓ Compiled in 254ms
+[01:16:36.270] Server  LOG      ✓ Compiled in 260ms

@@ -71,7 +71,10 @@ export default function Receipt({
           <div style={{ fontWeight: "bold", fontSize: "15px" }}>OWOABENES</div>
           <div>Mothercare & Kids Boutique</div>
           <div>Children's Products 0-18 Years</div>
-          {/* <div>Tel: 0549 241 991/ 0548 048 520</div> */}
+
+          
+          
+
         </div>
 
         {/* Transaction Details */}
@@ -131,6 +134,7 @@ export default function Receipt({
 
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: "8px" }}>
+          <div>Tel: 0549 241 991/ 0548 048 520</div>
           <div>Thank you for your purchase!</div>
           <div>Please visit us again</div>
           <div style={{ fontWeight: "bold", marginTop: "6px" }}>*** END OF RECEIPT ***</div>

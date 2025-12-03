@@ -1,8 +1,6 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -79,6 +77,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       const result = await res.json()
       if (result.success) {
         setProducts(result.data || [])
+      } else {
+        console.error("[v0] fetchProducts response error:", result.error)
       }
     } catch (error) {
       console.error("[v0] Error fetching products:", error)
@@ -94,6 +94,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       const result = await res.json()
       if (result.success) {
         setStaff(result.data || [])
+      } else {
+        console.error("[v0] fetchStaff response error:", result.error)
       }
     } catch (error) {
       console.error("[v0] Error fetching staff:", error)
@@ -122,6 +124,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
             amountReceived: t.amount_received,
           })) || []
         setTransactions(formattedTransactions)
+      } else {
+        console.error("[v0] fetchTransactions response error:", result.error)
       }
     } catch (error) {
       console.error("[v0] Error fetching transactions:", error)
@@ -164,8 +168,8 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
     if (
       newProduct.name &&
       newProduct.category &&
-      newProduct.wholesale_price &&
-      newProduct.wholesale_price_with_profit &&
+      newProduct.wholesale_price !== undefined &&
+      newProduct.wholesale_price_with_profit !== undefined &&
       newProduct.quantity !== undefined
     ) {
       setIsAddingProduct(true)
@@ -203,12 +207,16 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
           console.log("[v0] Product added successfully")
         } else {
           console.error("[v0] Error adding product:", result.error)
+          alert("Failed to add product: " + (result.error || "Unknown error"))
         }
       } catch (error) {
         console.error("[v0] Error adding product:", error)
+        alert("Error adding product: " + (error instanceof Error ? error.message : String(error)))
       } finally {
         setIsAddingProduct(false)
       }
+    } else {
+      alert("Please fill in all required product fields.")
     }
   }
 
@@ -238,34 +246,76 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
           console.log("[v0] Staff added successfully")
         } else {
           console.error("[v0] Error adding staff:", result.error)
+          alert("Failed to add staff: " + (result.error || "Unknown error"))
         }
       } catch (error) {
         console.error("[v0] Error adding staff:", error)
+        alert("Error adding staff: " + (error instanceof Error ? error.message : String(error)))
       } finally {
         setIsAddingStaff(false)
       }
+    } else {
+      alert("Please fill in all staff fields.")
     }
   }
 
-  const handleDeleteProduct = async (productId: string) => {
-    if (confirm("Are you sure you want to delete this product?")) {
-      try {
-        const res = await fetch(`/api/products/${productId}`, {
-          method: "DELETE",
-        });
-        const result = await res.json();
+  const [deletingProductId, setDeletingProductId] = useState<string | null>(null)
 
-        if (res.ok && result.success) { // Check if the response is OK and the result indicates success
-          setProducts(products.filter((product) => product.id !== productId));
-          console.log("[v0] Product deleted successfully");
-        } else {
-          console.error("[v0] Error deleting product:", result.error || "Unknown error");
+  // ---------- FIXED DELETE FUNCTION ----------
+  const handleDeleteProduct = async (productId: string) => {
+    if (!confirm("Are you sure you want to delete this product?")) return
+
+    setDeletingProductId(productId)
+    try {
+      const res = await fetch(`/api/products/${productId}`, {
+        method: "DELETE",
+      })
+
+      // Attempt to parse response carefully:
+      // - If 204 No Content => treat as success when res.ok
+      // - If content-type application/json => parse and inspect
+      // - Otherwise attempt a safe text parse or fallback to res.ok
+      let parsed: any = null
+      const contentType = res.headers.get("content-type")
+
+      if (res.status === 204) {
+        // No content response — treat as success if res.ok
+        parsed = { success: res.ok }
+      } else if (contentType && contentType.includes("application/json")) {
+        try {
+          parsed = await res.json()
+        } catch (err) {
+          console.warn("[v0] Failed to parse JSON delete response:", err)
+          parsed = { success: res.ok }
         }
-      } catch (error) {
-        console.error("[v0] Error deleting product:", error);
+      } else {
+        // Try to read text and attempt JSON.parse; otherwise fallback to ok
+        try {
+          const text = await res.text()
+          parsed = text ? JSON.parse(text) : { success: res.ok }
+        } catch (err) {
+          // not JSON
+          parsed = { success: res.ok }
+        }
       }
+
+      if (res.ok && parsed && parsed.success) {
+        // Remove from UI
+        setProducts((prev) => prev.filter((product) => product.id !== productId))
+        console.log("[v0] Product deleted successfully")
+      } else {
+        const serverMsg = parsed && parsed.error ? parsed.error : parsed && parsed.message ? parsed.message : "Unknown error"
+        console.error("[v0] Error deleting product:", serverMsg)
+        alert("Failed to delete product: " + serverMsg)
+      }
+    } catch (error) {
+      console.error("[v0] Error deleting product:", error)
+      alert("Error deleting product: " + (error instanceof Error ? error.message : String(error)))
+    } finally {
+      setDeletingProductId(null)
     }
-  };
+  }
+  // -------------------------------------------
 
   const filteredTransactions = transactions.filter(
     (t) =>
@@ -700,8 +750,16 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                           <Button
                             onClick={() => handleDeleteProduct(product.id)}
                             className="mt-2 bg-destructive hover:bg-destructive/90 text-destructive-foreground"
+                            disabled={deletingProductId === product.id}
                           >
-                            Delete
+                            {deletingProductId === product.id ? (
+                              <div className="flex items-center gap-2">
+                                <LoadingSpinner size="sm" variant="destructive" />
+                                <span>Deleting...</span>
+                              </div>
+                            ) : (
+                              "Delete"
+                            )}
                           </Button>
                         </CardContent>
                       </Card>
@@ -898,7 +956,6 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                       <p className="text-xs text-muted-foreground">Date</p>
                       <p className="font-semibold">
                         {new Date(selectedTransaction.date).toLocaleDateString()}
-                     
                       </p>
                     </div>
                     <div>
