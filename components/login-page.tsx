@@ -44,7 +44,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
       return
     }
 
-    const correctPassword = role === "admin" ? "admin123" : "cashier123"
+    const correctPassword = role === "admin" ? "admin1234" : "cashier1234"
     if (password === correctPassword) {
       onLogin(role)
       setError("")

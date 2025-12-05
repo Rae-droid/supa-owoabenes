@@ -985,7 +985,7 @@ const handleDeleteProduct = async (productId: string) => {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Cashier">Cashier</SelectItem>
-                        <SelectItem value="Sales Rep">Sales Rep</SelectItem>
+                        {/* <SelectItem value="Sales Rep">Sales Rep</SelectItem> */}
                         <SelectItem value="Manager">Manager</SelectItem>
                       </SelectContent>
                     </Select>
