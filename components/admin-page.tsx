@@ -388,7 +388,7 @@ const handleDeleteProduct = async (productId: string) => {
 
     try {
       // Call API to restore product
-      const response = await fetch("/api/products/delete", {
+      const response = await fetch("/api/products/restore", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
