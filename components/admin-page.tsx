@@ -861,7 +861,7 @@ const handleDeleteProduct = async (productId: string) => {
                         >
                             {deletingProductId === product.id ? (
                               <div className="flex items-center gap-2">
-                                <LoadingSpinner size="sm" variant="destructive" />
+                                <LoadingSpinner size="sm" variant="primary" />
                                 <span>Deleting...</span>
                               </div>
                             ) : (
