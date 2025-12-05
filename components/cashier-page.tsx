@@ -189,6 +189,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
         total: transactionTotal,
         payment_method: selectedPaymentMethod,
         customer_name: customerName || "Walk-in Customer",
+        customer_phone: receiptCustomerPhone, // <-- Add this line
         amount_received: Number(amountReceived),
         change: Number(amountReceived) - transactionTotal,
         receipt_number: `RCP-${Date.now()}`,
@@ -196,7 +197,11 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
 
       await addTransactionToDB(transactionData)
 
-      setLastTransaction(cartItems)
+      // Save the full transaction for the receipt
+      setLastTransaction([{
+        ...transactionData,
+        cashierName: "Benedicta Sarpong",
+      }])
       setShowPaymentConfirm(false)
       setShowReceipt(true)
       resetCart()
@@ -569,7 +574,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                             </div>
                           </div>
                         ))
-                    )}
+                    }
                   </div>
                 </CardContent>
               </Card>
