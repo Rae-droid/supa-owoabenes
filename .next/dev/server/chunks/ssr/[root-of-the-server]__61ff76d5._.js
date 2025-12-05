@@ -1067,14 +1067,14 @@ function ShoppingCart({ items, onRemove, onUpdateQuantity }) {
 // Uses ONLY inline styles + custom CSS for perfect POS printing
 __turbopack_context__.s([
     "default",
-    ()=>Receipt,
+    ()=>ReceiptComponent,
     "printReceipt",
     ()=>printReceipt
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 "use client";
 ;
-function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, paymentMethod = "cash", amountReceived = 0 }) {
+function ReceiptComponent({ items, discount, customerName, customerPhone, cashierName, amountReceived, change, paymentMethod }) {
     const subtotal = items.reduce((sum, item)=>{
         const priceToUse = item.wholeSalePriceWithProfit || item.price;
         return sum + priceToUse * item.quantity;
@@ -1089,7 +1089,6 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
     const now = new Date();
     const receiptNumber = Math.floor(Math.random() * 1000000);
     const numAmountReceived = Number(amountReceived) || 0;
-    const change = numAmountReceived - total;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1121,12 +1120,12 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/receipt.tsx",
-                            lineNumber: 68,
+                            lineNumber: 80,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 67,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1145,27 +1144,27 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                 children: "OWOABENES"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 73,
+                                lineNumber: 85,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: "Mothercare & Kids Boutique"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 74,
+                                lineNumber: 86,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: "Children's Products 0-18 Years"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 75,
+                                lineNumber: 87,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 72,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1185,20 +1184,20 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Receipt #:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 96,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: receiptNumber
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 96,
                                         columnNumber: 100
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 84,
+                                lineNumber: 96,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1211,20 +1210,20 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Date:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 97,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: now.toLocaleDateString()
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 97,
                                         columnNumber: 95
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 85,
+                                lineNumber: 97,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1237,20 +1236,20 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Time:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 98,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: now.toLocaleTimeString()
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 98,
                                         columnNumber: 95
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 86,
+                                lineNumber: 98,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1263,7 +1262,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Cashier:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 99,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1273,13 +1272,13 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Benedicta Sarpong"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 99,
                                         columnNumber: 98
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 87,
+                                lineNumber: 99,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1292,21 +1291,47 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Customer:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 88,
+                                        lineNumber: 100,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: customerName || "Walk-in Customer"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 88,
+                                        lineNumber: 100,
                                         columnNumber: 99
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 88,
+                                lineNumber: 100,
                                 columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    display: "flex",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "Phone:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 101,
+                                        columnNumber: 78
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: customerPhone || "No Phone"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/receipt.tsx",
+                                        lineNumber: 101,
+                                        columnNumber: 97
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/receipt.tsx",
+                                lineNumber: 101,
+                                columnNumber: 12
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 style: {
@@ -1318,26 +1343,26 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Payment:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 102,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: paymentMethod
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 102,
                                         columnNumber: 98
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 90,
+                                lineNumber: 102,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 83,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1361,34 +1386,34 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Item"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 109,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Qty"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 109,
                                         columnNumber: 30
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Price"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 109,
                                         columnNumber: 46
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Total"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 109,
                                         columnNumber: 64
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 96,
+                                lineNumber: 108,
                                 columnNumber: 11
                             }, this),
                             items.map((item)=>{
@@ -1410,14 +1435,14 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                             children: item.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 104,
+                                            lineNumber: 116,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: item.quantity
                                         }, void 0, false, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 105,
+                                            lineNumber: 117,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1427,7 +1452,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 106,
+                                            lineNumber: 118,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1440,20 +1465,20 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/receipt.tsx",
-                                            lineNumber: 107,
+                                            lineNumber: 119,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, item.id, true, {
                                     fileName: "[project]/components/receipt.tsx",
-                                    lineNumber: 103,
+                                    lineNumber: 115,
                                     columnNumber: 15
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 95,
+                        lineNumber: 107,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1473,7 +1498,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Subtotal:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 127,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1483,13 +1508,13 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 127,
                                         columnNumber: 99
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 115,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this),
                             discount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1507,7 +1532,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 133,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1517,13 +1542,13 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 134,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 120,
+                                lineNumber: 132,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1541,7 +1566,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "TOTAL:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 139,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1551,19 +1576,19 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 140,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 126,
+                                lineNumber: 138,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 114,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1583,7 +1608,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Amount Received:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 146,
                                         columnNumber: 77
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1593,13 +1618,13 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 146,
                                         columnNumber: 106
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 134,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1614,7 +1639,7 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         children: "Change:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 147,
                                         columnNumber: 115
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1624,19 +1649,19 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 147,
                                         columnNumber: 135
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 135,
+                                lineNumber: 147,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 133,
+                        lineNumber: 145,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1652,21 +1677,21 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                 children: "Tel: 0549241991/ 0548048520"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 140,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: "Thank you for your purchase!"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 141,
+                                lineNumber: 153,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: "Please visit us again"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 142,
+                                lineNumber: 154,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1677,19 +1702,19 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                 children: "*** END OF RECEIPT ***"
                             }, void 0, false, {
                                 fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 143,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/receipt.tsx",
-                        lineNumber: 139,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/receipt.tsx",
-                lineNumber: 53,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
@@ -1712,13 +1737,13 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
       `
             }, void 0, false, {
                 fileName: "[project]/components/receipt.tsx",
-                lineNumber: 148,
+                lineNumber: 160,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/receipt.tsx",
-        lineNumber: 52,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
@@ -3808,6 +3833,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                 items: lastTransaction,
                                                 discount: lastTransaction.reduce((sum, item)=>sum + item.subtotal, 0) * discountPercentage / 100,
                                                 customerName: receiptCustomerName,
+                                                customerPhone: receiptCustomerPhone,
                                                 cashierName: "Benedicta Sarpong",
                                                 amountReceived: receiptAmountReceived,
                                                 change: receiptAmountReceived - totalAmount,
@@ -3832,7 +3858,7 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "Close"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 759,
+                                                    lineNumber: 760,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3841,13 +3867,13 @@ function CashierPage({ onAddTransaction, onLogout }) {
                                                     children: "🖨️ Print"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/cashier-page.tsx",
-                                                    lineNumber: 762,
+                                                    lineNumber: 763,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/cashier-page.tsx",
-                                            lineNumber: 758,
+                                            lineNumber: 759,
                                             columnNumber: 17
                                         }, this)
                                     ]

@@ -21,14 +21,27 @@ interface ReceiptProps {
   amountReceived?: number
 }
 
-export default function Receipt({
+interface ReceiptComponentProps {
+  items: CartItem[]
+  discount: number
+  customerName: string
+  customerPhone?: string // <-- Add this line
+  cashierName: string
+  amountReceived: number
+  change: number
+  paymentMethod: string
+}
+
+export default function ReceiptComponent({
   items,
-  customerName = "",
-  customerPhone = 0,
-  discount = 0,
-  paymentMethod = "cash",
-  amountReceived = 0,
-}: ReceiptProps) {
+  discount,
+  customerName,
+  customerPhone, // <-- Add this line
+  cashierName,
+  amountReceived,
+  change,
+  paymentMethod,
+}: ReceiptComponentProps) {
   const subtotal = items.reduce((sum, item) => {
     const priceToUse = item.wholeSalePriceWithProfit || item.price
     return sum + priceToUse * item.quantity
@@ -46,7 +59,6 @@ export default function Receipt({
   const now = new Date()
   const receiptNumber = Math.floor(Math.random() * 1000000)
   const numAmountReceived = Number(amountReceived) || 0
-  const change = numAmountReceived - total
 
   return (
     <div>
@@ -86,7 +98,7 @@ export default function Receipt({
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Time:</span><span>{now.toLocaleTimeString()}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
-          {/* <div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "N/A"}</span></div> */}
+          {<div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "No Phone"}</span></div>}
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
           
         </div>

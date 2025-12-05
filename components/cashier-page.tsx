@@ -749,6 +749,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                       (lastTransaction.reduce((sum, item) => sum + item.subtotal, 0) * discountPercentage) / 100
                     }
                     customerName={receiptCustomerName}
+                    customerPhone={receiptCustomerPhone} // <-- Add this line
                     cashierName="Benedicta Sarpong"
                     amountReceived={receiptAmountReceived}
                     change={receiptAmountReceived - totalAmount}

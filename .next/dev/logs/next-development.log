@@ -1,34 +1,363 @@
-[00:00:10.795] Server  LOG      ✓ Ready in 7.6s
-[00:00:31.329] Server  LOG      ○ Compiling / ...
-[00:00:41.840] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:10.708] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
-[00:01:10.708] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
-[00:01:10.708] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
-[00:01:10.708] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
-[00:01:14.294] Browser LOG     Products fetched successfully: 77 products
-[00:01:14.294] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":77}
-[00:01:14.295] Browser LOG     Products fetched successfully: 77 products
-[00:01:14.295] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":77}
-[00:01:17.126] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 0
-[00:01:17.126] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":77}
-[00:01:17.126] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":true,"refreshKey":1,"totalProducts":77}
-[00:01:17.552] Browser LOG     Products fetched successfully: 77 products
-[00:01:17.552] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":77}
-[00:01:43.963] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 0
-[00:01:43.963] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":2,"totalProducts":77}
-[00:01:43.963] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":true,"refreshKey":2,"totalProducts":77}
-[00:01:44.406] Browser LOG     Products fetched successfully: 77 products
-[00:01:44.407] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":2,"totalProducts":77}
-[00:03:36.862] Server  LOG      ✓ Compiled in 295ms
-[00:03:40.882] Server  LOG      ✓ Compiled in 372ms
-[00:03:45.175] Server  LOG      ✓ Compiled in 338ms
-[00:03:47.708] Server  LOG      ✓ Compiled in 186ms
-[00:03:51.683] Server  LOG      ✓ Compiled in 175ms
-[00:03:53.096] Server  LOG      ✓ Compiled in 306ms
-[00:03:57.439] Server  LOG      ✓ Compiled in 188ms
-[00:03:59.604] Server  LOG      ✓ Compiled in 362ms
-[00:06:12.735] Server  LOG      ✓ Compiled in 217ms
-[00:06:16.496] Server  LOG      ✓ Compiled in 215ms
-[00:06:24.264] Server  LOG      ✓ Compiled in 217ms
-[00:06:30.033] Server  LOG      ✓ Compiled in 204ms
-[00:08:32.187] Server  LOG      ✓ Compiled in 308ms
+[00:00:01.846] Server  LOG     
+[00:00:01.847] Server  LOG        We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:01.847] Server  LOG        The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+[00:00:01.848] Server  LOG        	- include was updated to add '.next\dev/types/**/*.ts'
+[00:00:01.848] Server  LOG        	- include was updated to add '.next\dev/types/**/*.ts'
+[00:00:01.849] Server  LOG     
+[00:00:02.373] Server  LOG      ✓ Ready in 1567ms
+[00:01:52.085] Server  LOG      ○ Compiling / ...
+[00:01:59.021] Server  ERROR    ⨯ ./components/cashier-page.tsx:572:21
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     }
+      |                     ^
+  573 |                   </div>
+  574 |                 </CardContent>
+  575 |               </Card>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:02:02.098] Server  LOG      ○ Compiling /_error ...
+[00:02:05.040] Browser ERROR   uncaughtError: Error: ./components/cashier-page.tsx:572:21
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     }
+      |                     ^
+  573 |                   </div>
+  574 |                 </CardContent>
+  575 |               </Card>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:02:06.066] Browser ERROR   ./components/cashier-page.tsx:572:21
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     }
+      |                     ^
+  573 |                   </div>
+  574 |                 </CardContent>
+  575 |               </Card>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:06.066] Browser ERROR   ./components/cashier-page.tsx:572:21
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     }
+      |                     ^
+  573 |                   </div>
+  574 |                 </CardContent>
+  575 |               </Card>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:02:06.186] Browser ERROR   ./components/cashier-page.tsx:572:21
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     }
+      |                     ^
+  573 |                   </div>
+  574 |                 </CardContent>
+  575 |               </Card>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:04.558] Browser ERROR   ./components/cashier-page.tsx:573:20
+Parsing ecmascript source code failed
+  571 |                         ))
+  572 |                     
+> 573 |                   </div>
+      |                    ^^^^^
+  574 |                 </CardContent>
+  575 |               </Card>
+  576 |             </TabsContent>
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:08.550] Browser ERROR   ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:14.548] Browser ERROR   ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:14.548] Browser ERROR   ./components/cashier-page.tsx:572:23
+Parsing ecmascript source code failed
+  570 |                           </div>
+  571 |                         ))
+> 572 |                     ) : (
+      |                       ^
+  573 |                       <p className="text-xs text-muted-foreground text-center py-4">No transactions yet</p>
+  574 |                     )}
+  575 |                   </div>
+
+Expected '</', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:19.552] Browser ERROR   ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:23.141] Server  ERROR    ⨯ ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:03:23.387] Browser ERROR   uncaughtError: Error: ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+
+
+[00:03:23.652] Browser ERROR   ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:03:23.652] Browser ERROR   ./components/receipt.tsx:62:9
+Ecmascript file had an error
+  60 |   const receiptNumber = Math.floor(Math.random() * 1000000)
+  61 |   const numAmountReceived = Number(amountReceived) || 0
+> 62 |   const change = numAmountReceived - total
+     |         ^^^^^^
+  63 |
+  64 |   return (
+  65 |     <div>
+
+the name `change` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/receipt.tsx [Client Component Browser]
+    ./components/cashier-page.tsx [Client Component Browser]
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/receipt.tsx [Client Component SSR]
+    ./components/cashier-page.tsx [Client Component SSR]
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:04:00.448] Server  LOG      ✓ Compiled in 127ms
+[00:04:03.121] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:20.911] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:04:20.911] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:04:20.911] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:04:20.911] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:04:22.812] Server  ERROR   [v0] Supabase environment variables are missing! Check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your environment variables.
+[00:04:22.829] Server  WARN    [v0] Supabase browser client unavailable - missing environment variables
+[00:04:22.839] Server  ERROR   [v0] Cannot create Supabase server client - NEXT_PUBLIC_SUPABASE_URL is missing
+[00:04:23.451] Browser LOG     No products found or API error
+[00:04:23.451] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":0}
+[00:04:23.616] Browser LOG     No products found or API error
+[00:04:27.116] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 1
+[00:04:27.116] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":false,"refreshKey":0,"totalProducts":0}
+[00:04:27.116] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:04:27.116] Browser LOG     No products found or API error
+[00:04:27.116] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":false,"refreshKey":0,"totalProducts":0}
+[00:04:38.069] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 1
+[00:04:38.069] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":0}
+[00:04:38.069] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":true,"refreshKey":1,"totalProducts":0}
+[00:04:38.069] Browser ERROR   Failed to refresh products: Database client not initialized. Check environment variables.
+[00:04:38.218] Browser LOG     No products found or API error
+[00:04:38.218] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":0}

@@ -46,22 +46,29 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/module/index.js [app-route] (ecmascript) <locals>");
 ;
-const supabaseUrl = ("TURBOPACK compile-time value", "https://kiclnmpvaebuzcndebxz.supabase.co");
-const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpY2xubXB2YWVidXpjbmRlYnh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwOTQxNTEsImV4cCI6MjA3OTY3MDE1MX0.UQ8OzGKjKHDcD6xl3GN0p3r3FlEXyWMSOTukkXp58QY");
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-;
+if (!supabaseUrl || !supabaseAnonKey) {
+    console.error("[v0] Supabase environment variables are missing! Check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your environment variables.");
+}
 const supabaseBrowser = (()=>{
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
+    if (!supabaseUrl || !supabaseAnonKey) {
+        console.warn("[v0] Supabase browser client unavailable - missing environment variables");
+        return null;
+    }
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(supabaseUrl, supabaseAnonKey);
 })();
 const supabaseServer = (()=>{
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
+    if (!supabaseUrl) {
+        console.error("[v0] Cannot create Supabase server client - NEXT_PUBLIC_SUPABASE_URL is missing");
+        return null;
+    }
     const key = supabaseServiceKey || supabaseAnonKey;
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
+    if (!key) {
+        console.error("[v0] Cannot create Supabase server client - no valid API key available");
+        return null;
+    }
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(supabaseUrl, key);
 })();
 }),
