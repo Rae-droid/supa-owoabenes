@@ -65,11 +65,11 @@ export default function ReceiptComponent({
       <div
         id="receipt-content"
         style={{
-          width: "100mm",
+          width: "105mm",
           margin: "0 auto",
           background: "white",
           fontFamily: "monospace",
-          fontSize: "15px",
+          fontSize: "17px",
           padding: "8mm",
           color: "black",
           lineHeight: "1.4",
