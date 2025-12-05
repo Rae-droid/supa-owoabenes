@@ -59,6 +59,7 @@ export default function ReceiptComponent({
   const now = new Date()
   const receiptNumber = Math.floor(Math.random() * 1000000)
   const numAmountReceived = Number(amountReceived) || 0
+  const calculatedChange = numAmountReceived - total
 
   return (
     <div>
@@ -97,7 +98,7 @@ export default function ReceiptComponent({
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Date:</span><span>{now.toLocaleDateString()}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Time:</span><span>{now.toLocaleTimeString()}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "No Name"}</span></div>
           {<div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "No Phone"}</span></div>}
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
           
@@ -144,7 +145,7 @@ export default function ReceiptComponent({
         {/* Payment */}
         <div style={{ borderBottom: "1px dashed black", paddingBottom: "6px", marginBottom: "6px" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Amount Received:</span><span>₵{numAmountReceived.toFixed(2)}</span></div>
-          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold", marginTop: "4px" }}><span>Change:</span><span>₵{Math.max(0, change).toFixed(2)}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "bold", marginTop: "4px" }}><span>Change:</span><span>₵{Math.max(0, calculatedChange).toFixed(2)}</span></div>
         </div>
 
         {/* Footer */}

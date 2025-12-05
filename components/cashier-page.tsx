@@ -369,7 +369,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                   </CardContent>
                   <CardContent>
                     <Input
-                      placeholder="Customer Phone..Not ready yet"
+                      placeholder="Enter customer phone (required)"
                       value={receiptCustomerPhone}
                       onChange={(e) => setReceiptCustomerPhone(e.target.value)}
                       className="text-sm border-primary/30 focus:border-primary"
