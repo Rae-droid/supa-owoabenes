@@ -233,650 +233,86 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/components/loading-spinner.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/components/product-grid.tsx [app-client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>LoadingSpinner
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-"use client";
-;
-function LoadingSpinner({ size = "md", variant = "primary", fullScreen = false, label = "Loading..." }) {
-    const sizeMap = {
-        sm: 80,
-        md: 120,
-        lg: 160
-    };
-    const spinnerSize = sizeMap[size];
-    const text = "owoabenes mothercare • ";
-    const spinnerContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex flex-col items-center justify-center gap-4",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
-                children: `
-        @keyframes spinnerRotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulseGlow {
-          0% { opacity: .7; transform: scale(0.95); }
-          50% { opacity: 1; transform: scale(1); }
-          100% { opacity: .7; transform: scale(0.95); }
-        }
-        
-        .text-circle {
-          animation: spinnerRotate 8s linear infinite;
-          transform-origin: center;
-        }
-
-        .glow-ring {
-          animation: spinnerRotate 3s linear infinite, pulseGlow 2s ease-in-out infinite;
-        }
-      `
-            }, void 0, false, {
-                fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 27,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative",
-                style: {
-                    width: spinnerSize,
-                    height: spinnerSize
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                        width: spinnerSize,
-                        height: spinnerSize,
-                        viewBox: `0 0 ${spinnerSize} ${spinnerSize}`,
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                        id: "circleTextPath",
-                                        d: `
-                M ${spinnerSize / 2}, ${spinnerSize / 2}
-                m 0, -${spinnerSize / 2 - 15}
-                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, ${spinnerSize - 30}
-                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, -${spinnerSize - 30}
-              `,
-                                        fill: "none"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/loading-spinner.tsx",
-                                        lineNumber: 52,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
-                                        id: "gradText",
-                                        x1: "0%",
-                                        y1: "0%",
-                                        x2: "100%",
-                                        y2: "100%",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                                offset: "0%",
-                                                stopColor: "var(--color-primary, #3b82f6)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/loading-spinner.tsx",
-                                                lineNumber: 64,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                                offset: "100%",
-                                                stopColor: "var(--color-accent, #a855f7)"
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/loading-spinner.tsx",
-                                                lineNumber: 65,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/components/loading-spinner.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/loading-spinner.tsx",
-                                lineNumber: 51,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
-                                fill: "url(#gradText)",
-                                fontSize: spinnerSize / 10,
-                                fontWeight: "700",
-                                className: "text-circle tracking-[3px]",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textPath", {
-                                    href: "#circleTextPath",
-                                    children: text.repeat(10)
-                                }, void 0, false, {
-                                    fileName: "[project]/components/loading-spinner.tsx",
-                                    lineNumber: 76,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/components/loading-spinner.tsx",
-                                lineNumber: 70,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                cx: spinnerSize / 2,
-                                cy: spinnerSize / 2,
-                                r: spinnerSize / 2 - 25,
-                                stroke: "url(#gradText)",
-                                strokeWidth: "6",
-                                fill: "none",
-                                className: "glow-ring drop-shadow-[0_0_10px_rgba(168,85,247,.5)]",
-                                strokeDasharray: `${2 * Math.PI * (spinnerSize / 2 - 25) * 0.28}`
-                            }, void 0, false, {
-                                fileName: "[project]/components/loading-spinner.tsx",
-                                lineNumber: 82,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/loading-spinner.tsx",
-                        lineNumber: 50,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute rounded-full bg-background",
-                        style: {
-                            width: spinnerSize * 0.45,
-                            height: spinnerSize * 0.45,
-                            top: "50%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            boxShadow: "0 0 25px rgba(255,255,255,0.2)"
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/components/loading-spinner.tsx",
-                        lineNumber: 95,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 49,
-                columnNumber: 7
-            }, this),
-            label && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-sm font-medium text-primary",
-                children: label
-            }, void 0, false, {
-                fileName: "[project]/components/loading-spinner.tsx",
-                lineNumber: 108,
-                columnNumber: 17
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/components/loading-spinner.tsx",
-        lineNumber: 26,
-        columnNumber: 5
-    }, this);
-    if (fullScreen) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50",
-            children: spinnerContent
+// Add this near your refresh button in CashierPage:
+/*#__PURE__*/ const { jsxDEV: _jsxDEV } = __turbopack_context__.r("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+_jsxDEV("div", {
+    className: "flex justify-end mb-2 gap-2",
+    children: [
+        /*#__PURE__*/ _jsxDEV(Button, {
+            onClick: ()=>{
+                console.log("Manual refresh triggered");
+                setRefreshTrigger((prev)=>prev + 1);
+            },
+            variant: "outline",
+            size: "sm",
+            children: "Test Refresh"
         }, void 0, false, {
-            fileName: "[project]/components/loading-spinner.tsx",
-            lineNumber: 114,
-            columnNumber: 7
-        }, this);
-    }
-    return spinnerContent;
-}
-_c = LoadingSpinner;
-var _c;
-__turbopack_context__.k.register(_c, "LoadingSpinner");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
-"[project]/components/product-grid.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "default",
-    ()=>ProductGrid
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/loading-spinner.tsx [app-client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-"use client";
-;
-;
-;
-;
-;
-function ProductGrid({ onAddToCart, deletedProductIds = new Set(), refreshKey = 0 }) {
-    _s();
-    const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [internalRefreshCounter, setInternalRefreshCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0) // Renamed
-    ;
-    const fetchProducts = async ()=>{
-        setIsLoading(true);
-        try {
-            const res = await fetch("/api/products");
-            const result = await res.json();
-            if (result.success && result.data && result.data.length > 0) {
-                setProducts(result.data);
-                console.log("Products fetched successfully:", result.data.length, "products");
-            } else {
-                console.log("No products found or API error");
-            }
-        } catch (error) {
-            console.error("[v0] Error fetching products:", error);
-        } finally{
-            setIsLoading(false);
-        }
-    };
-    // Initial fetch and fetch on refreshKey or internalRefreshCounter change
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "ProductGrid.useEffect": ()=>{
-            console.log("ProductGrid useEffect triggered, refreshKey:", refreshKey, "internalRefreshCounter:", internalRefreshCounter);
-            fetchProducts();
-        }
-    }["ProductGrid.useEffect"], [
-        refreshKey,
-        internalRefreshCounter
-    ]); // ADD refreshKey to dependencies
-    // Listen for ALL refresh events - SIMPLIFIED
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "ProductGrid.useEffect": ()=>{
-            const handleRefresh = {
-                "ProductGrid.useEffect.handleRefresh": ()=>{
-                    console.log("ProductGrid: Refresh event received");
-                    setInternalRefreshCounter({
-                        "ProductGrid.useEffect.handleRefresh": (prev)=>prev + 1
-                    }["ProductGrid.useEffect.handleRefresh"]);
-                }
-            }["ProductGrid.useEffect.handleRefresh"];
-            // Only listen to the main event
-            window.addEventListener("productsRefresh", handleRefresh);
-            return ({
-                "ProductGrid.useEffect": ()=>{
-                    window.removeEventListener("productsRefresh", handleRefresh);
-                }
-            })["ProductGrid.useEffect"];
-        }
-    }["ProductGrid.useEffect"], []);
-    // Filter out deleted products first
-    const availableProducts = products.filter((product)=>!deletedProductIds.has(product.id));
-    const categories = [
-        ...new Set(availableProducts.map((p)=>p.category))
-    ];
-    // Apply category and search filters to available products only
-    const filteredProducts = availableProducts.filter((p)=>{
-        const matchesCategory = !selectedCategory || p.category === selectedCategory;
-        const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase());
-        const hasStock = (p.quantity || 0) > 0;
-        return matchesCategory && matchesSearch && hasStock;
-    });
-    // Debug logging
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "ProductGrid.useEffect": ()=>{
-            console.log("ProductGrid state:", {
-                totalProducts: products.length,
-                availableProducts: availableProducts.length,
-                filteredProducts: filteredProducts.length,
-                isLoading,
-                refreshKey,
-                internalRefreshCounter
-            });
-        }
-    }["ProductGrid.useEffect"], [
-        products,
-        isLoading,
-        refreshKey,
-        internalRefreshCounter
-    ]);
-    if (isLoading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex items-center justify-center h-96",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$loading$2d$spinner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                    size: "lg"
-                }, void 0, false, {
-                    fileName: "[project]/components/product-grid.tsx",
-                    lineNumber: 102,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "ml-2",
-                    children: "Loading products..."
-                }, void 0, false, {
-                    fileName: "[project]/components/product-grid.tsx",
-                    lineNumber: 103,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
             fileName: "[project]/components/product-grid.tsx",
-            lineNumber: 101,
-            columnNumber: 7
-        }, this);
-    }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "space-y-2",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+            lineNumber: 3,
+            columnNumber: 3
+        }, /*TURBOPACK member replacement*/ __turbopack_context__.e),
+        /*#__PURE__*/ _jsxDEV(Button, {
+            onClick: refreshProducts,
+            disabled: isRefreshing,
+            className: "bg-primary text-white",
+            children: isRefreshing ? /*#__PURE__*/ _jsxDEV("div", {
+                className: "flex items-center gap-2",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                        className: "pb-1 pt-1.5",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                            className: "text-xs",
-                            children: "Search Products"
-                        }, void 0, false, {
-                            fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 112,
-                            columnNumber: 11
-                        }, this)
+                    /*#__PURE__*/ _jsxDEV(LoadingSpinner, {
+                        size: "sm"
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 111,
+                        lineNumber: 20,
                         columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                        className: "pb-1",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                            type: "text",
-                            placeholder: "Search by product name...",
-                            value: searchQuery,
-                            onChange: (e)=>setSearchQuery(e.target.value),
-                            className: "w-full h-7 text-xs"
-                        }, void 0, false, {
-                            fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 115,
-                            columnNumber: 11
-                        }, this)
+                    }, /*TURBOPACK member replacement*/ __turbopack_context__.e),
+                    /*#__PURE__*/ _jsxDEV("span", {
+                        children: "Refreshing..."
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 114,
+                        lineNumber: 21,
                         columnNumber: 9
-                    }, this)
+                    }, /*TURBOPACK member replacement*/ __turbopack_context__.e)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 110,
+                lineNumber: 19,
                 columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+            }, /*TURBOPACK member replacement*/ __turbopack_context__.e) : /*#__PURE__*/ _jsxDEV("div", {
+                className: "flex items-center gap-2",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                        className: "pb-1 pt-1.5",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                            className: "text-xs",
-                            children: "Categories"
-                        }, void 0, false, {
-                            fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 127,
-                            columnNumber: 11
-                        }, this)
+                    /*#__PURE__*/ _jsxDEV("span", {
+                        children: "🔄"
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 126,
+                        lineNumber: 25,
                         columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                        className: "pb-1",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex flex-wrap gap-1.5",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    onClick: ()=>setSelectedCategory(null),
-                                    variant: selectedCategory === null ? "default" : "outline",
-                                    className: "text-[10px] h-6 px-2",
-                                    size: "sm",
-                                    children: "All Products"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/product-grid.tsx",
-                                    lineNumber: 131,
-                                    columnNumber: 13
-                                }, this),
-                                categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                        onClick: ()=>setSelectedCategory(cat),
-                                        variant: selectedCategory === cat ? "default" : "outline",
-                                        className: "text-[10px] h-6 px-2",
-                                        size: "sm",
-                                        children: cat
-                                    }, cat, false, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 140,
-                                        columnNumber: 15
-                                    }, this))
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/product-grid.tsx",
-                            lineNumber: 130,
-                            columnNumber: 11
-                        }, this)
+                    }, /*TURBOPACK member replacement*/ __turbopack_context__.e),
+                    /*#__PURE__*/ _jsxDEV("span", {
+                        children: "Refresh Products"
                     }, void 0, false, {
                         fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 129,
+                        lineNumber: 26,
                         columnNumber: 9
-                    }, this)
+                    }, /*TURBOPACK member replacement*/ __turbopack_context__.e)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 125,
+                lineNumber: 24,
                 columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-xs text-muted-foreground mb-2",
-                children: [
-                    "Showing ",
-                    filteredProducts.length,
-                    " of ",
-                    availableProducts.length,
-                    " products",
-                    refreshKey > 0 && ` • Refreshed ${refreshKey} times`
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 154,
-                columnNumber: 7
-            }, this),
-            filteredProducts.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                className: "p-6 text-center",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-muted-foreground",
-                        children: "No products found matching your search or category."
-                    }, void 0, false, {
-                        fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 161,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                        onClick: ()=>setInternalRefreshCounter((prev)=>prev + 1),
-                        className: "mt-2",
-                        size: "sm",
-                        children: "Refresh"
-                    }, void 0, false, {
-                        fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 162,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 160,
-                columnNumber: 9
-            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
-                children: filteredProducts.map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                        className: "hover:shadow-lg transition-shadow overflow-hidden flex flex-col",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative w-full h-48 bg-muted overflow-hidden",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: product.image || "/placeholder.svg?height=192&width=192&query=product",
-                                    alt: product.name,
-                                    className: "w-full h-full object-cover"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/product-grid.tsx",
-                                    lineNumber: 171,
-                                    columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 170,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                className: "pb-3",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "text-base line-clamp-2",
-                                        children: product.name
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 178,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
-                                        className: "text-xs",
-                                        children: product.brand_name || product.category
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 179,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 177,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                className: "space-y-3 flex-grow flex flex-col",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2 bg-muted p-2 rounded",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between items-center",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-xs text-muted-foreground",
-                                                        children: "Price:"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 184,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "font-bold text-primary",
-                                                        children: [
-                                                            "₵",
-                                                            product.wholesale_price_with_profit?.toFixed(2) || "N/A"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 185,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/product-grid.tsx",
-                                                lineNumber: 183,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex justify-between items-center",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-xs text-muted-foreground",
-                                                        children: "Stock:"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 188,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-sm font-bold text-blue-600",
-                                                        children: product.quantity
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/product-grid.tsx",
-                                                        lineNumber: 189,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/components/product-grid.tsx",
-                                                lineNumber: 187,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 182,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex justify-between items-center",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded",
-                                            children: product.category
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/product-grid.tsx",
-                                            lineNumber: 193,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 192,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                        onClick: ()=>onAddToCart(product),
-                                        className: "w-full bg-accent hover:bg-accent/90 text-accent-foreground mt-auto",
-                                        children: "Add to Cart"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/product-grid.tsx",
-                                        lineNumber: 197,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/product-grid.tsx",
-                                lineNumber: 181,
-                                columnNumber: 15
-                            }, this)
-                        ]
-                    }, product.id, true, {
-                        fileName: "[project]/components/product-grid.tsx",
-                        lineNumber: 169,
-                        columnNumber: 13
-                    }, this))
-            }, void 0, false, {
-                fileName: "[project]/components/product-grid.tsx",
-                lineNumber: 167,
-                columnNumber: 9
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/components/product-grid.tsx",
-        lineNumber: 109,
-        columnNumber: 5
-    }, this);
-}
-_s(ProductGrid, "5X+u+okj08ZinOj1kK9uGfDmJVs=");
-_c = ProductGrid;
-var _c;
-__turbopack_context__.k.register(_c, "ProductGrid");
+            }, /*TURBOPACK member replacement*/ __turbopack_context__.e)
+        }, void 0, false, {
+            fileName: "[project]/components/product-grid.tsx",
+            lineNumber: 13,
+            columnNumber: 3
+        }, /*TURBOPACK member replacement*/ __turbopack_context__.e)
+    ]
+}, void 0, true, {
+    fileName: "[project]/components/product-grid.tsx",
+    lineNumber: 2,
+    columnNumber: 1
+}, /*TURBOPACK member replacement*/ __turbopack_context__.e);
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -2068,6 +1504,209 @@ __turbopack_context__.k.register(_c6, "SelectItem");
 __turbopack_context__.k.register(_c7, "SelectSeparator");
 __turbopack_context__.k.register(_c8, "SelectScrollUpButton");
 __turbopack_context__.k.register(_c9, "SelectScrollDownButton");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/components/loading-spinner.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>LoadingSpinner
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+"use client";
+;
+function LoadingSpinner({ size = "md", variant = "primary", fullScreen = false, label = "Loading..." }) {
+    const sizeMap = {
+        sm: 80,
+        md: 120,
+        lg: 160
+    };
+    const spinnerSize = sizeMap[size];
+    const text = "owoabenes mothercare • ";
+    const spinnerContent = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "flex flex-col items-center justify-center gap-4",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
+                children: `
+        @keyframes spinnerRotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+          0% { opacity: .7; transform: scale(0.95); }
+          50% { opacity: 1; transform: scale(1); }
+          100% { opacity: .7; transform: scale(0.95); }
+        }
+        
+        .text-circle {
+          animation: spinnerRotate 8s linear infinite;
+          transform-origin: center;
+        }
+
+        .glow-ring {
+          animation: spinnerRotate 3s linear infinite, pulseGlow 2s ease-in-out infinite;
+        }
+      `
+            }, void 0, false, {
+                fileName: "[project]/components/loading-spinner.tsx",
+                lineNumber: 27,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "relative",
+                style: {
+                    width: spinnerSize,
+                    height: spinnerSize
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                        width: spinnerSize,
+                        height: spinnerSize,
+                        viewBox: `0 0 ${spinnerSize} ${spinnerSize}`,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        id: "circleTextPath",
+                                        d: `
+                M ${spinnerSize / 2}, ${spinnerSize / 2}
+                m 0, -${spinnerSize / 2 - 15}
+                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, ${spinnerSize - 30}
+                a ${spinnerSize / 2 - 15}, ${spinnerSize / 2 - 15} 0 1,1 0, -${spinnerSize - 30}
+              `,
+                                        fill: "none"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/loading-spinner.tsx",
+                                        lineNumber: 52,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                        id: "gradText",
+                                        x1: "0%",
+                                        y1: "0%",
+                                        x2: "100%",
+                                        y2: "100%",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                                offset: "0%",
+                                                stopColor: "var(--color-primary, #3b82f6)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/loading-spinner.tsx",
+                                                lineNumber: 64,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                                offset: "100%",
+                                                stopColor: "var(--color-accent, #a855f7)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/loading-spinner.tsx",
+                                                lineNumber: 65,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/loading-spinner.tsx",
+                                        lineNumber: 63,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 51,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
+                                fill: "url(#gradText)",
+                                fontSize: spinnerSize / 10,
+                                fontWeight: "700",
+                                className: "text-circle tracking-[3px]",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textPath", {
+                                    href: "#circleTextPath",
+                                    children: text.repeat(10)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/loading-spinner.tsx",
+                                    lineNumber: 76,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 70,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                cx: spinnerSize / 2,
+                                cy: spinnerSize / 2,
+                                r: spinnerSize / 2 - 25,
+                                stroke: "url(#gradText)",
+                                strokeWidth: "6",
+                                fill: "none",
+                                className: "glow-ring drop-shadow-[0_0_10px_rgba(168,85,247,.5)]",
+                                strokeDasharray: `${2 * Math.PI * (spinnerSize / 2 - 25) * 0.28}`
+                            }, void 0, false, {
+                                fileName: "[project]/components/loading-spinner.tsx",
+                                lineNumber: 82,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/loading-spinner.tsx",
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute rounded-full bg-background",
+                        style: {
+                            width: spinnerSize * 0.45,
+                            height: spinnerSize * 0.45,
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            boxShadow: "0 0 25px rgba(255,255,255,0.2)"
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/components/loading-spinner.tsx",
+                        lineNumber: 95,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/loading-spinner.tsx",
+                lineNumber: 49,
+                columnNumber: 7
+            }, this),
+            label && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-sm font-medium text-primary",
+                children: label
+            }, void 0, false, {
+                fileName: "[project]/components/loading-spinner.tsx",
+                lineNumber: 108,
+                columnNumber: 17
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/components/loading-spinner.tsx",
+        lineNumber: 26,
+        columnNumber: 5
+    }, this);
+    if (fullScreen) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50",
+            children: spinnerContent
+        }, void 0, false, {
+            fileName: "[project]/components/loading-spinner.tsx",
+            lineNumber: 114,
+            columnNumber: 7
+        }, this);
+    }
+    return spinnerContent;
+}
+_c = LoadingSpinner;
+var _c;
+__turbopack_context__.k.register(_c, "LoadingSpinner");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -7320,4 +6959,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=_01ac5d40._.js.map
+//# sourceMappingURL=_0f82b9f6._.js.map

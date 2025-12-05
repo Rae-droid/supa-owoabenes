@@ -63,7 +63,7 @@ export default function Receipt({
       >
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: "8px" }}>
-          <img src="/back.jpeg" alt="Logo" style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+          <img src="/back.jpeg" alt="Logo" style={{ width: "120px", height: "120px", objectFit: "contain" }} />
         </div>
 
         {/* Header */}
@@ -134,7 +134,7 @@ export default function Receipt({
 
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: "8px" }}>
-          <div>Tel: 0549 241 991/ 0548 048 520</div>
+          <div>Tel: 0549241991/ 0548048520</div>
           <div>Thank you for your purchase!</div>
           <div>Please visit us again</div>
           <div style={{ fontWeight: "bold", marginTop: "6px" }}>*** END OF RECEIPT ***</div>

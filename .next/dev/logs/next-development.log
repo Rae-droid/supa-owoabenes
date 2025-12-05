@@ -1,217 +1,48 @@
-[00:00:02.393] Server  LOG      ✓ Ready in 1488ms
-[00:00:24.323] Server  LOG      ○ Compiling / ...
-[00:00:39.409] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:20.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:34.066] Server  LOG      ○ Compiling /api/products ...
-[00:01:57.651] Browser ERROR   [v0] Error deleting product: {}
-[00:05:35.079] Server  LOG      ✓ Compiled in 1446ms
-[00:06:17.004] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:37.707] Browser ERROR   [v0] Error deleting product: {}
-[00:09:50.973] Server  LOG      ✓ Compiled in 539ms
-[00:10:02.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:19.683] Browser ERROR   [v0] Error deleting product: {}
-[00:10:32.062] Server  LOG      ✓ Compiled in 363ms
-[00:16:38.414] Server  LOG      ✓ Compiled in 541ms
-[00:16:47.454] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:17:19.851] Browser ERROR   [v0] Error deleting product: Unknown error
-[00:21:58.589] Server  LOG      ✓ Compiled in 601ms
-[00:22:48.949] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:23.398] Server  ERROR   [v0] Error fetching products: {}
-[00:23:23.427] Server  ERROR   [v0] Error fetching staff: {}
-[00:23:23.442] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:23:23.615] Server  ERROR   [v0] Error fetching products: {}
-[00:23:23.628] Server  ERROR   [v0] Error fetching staff: {}
-[00:23:23.667] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:23:23.707] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
-[00:23:23.707] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
-[00:23:23.707] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
-[00:23:23.883] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
-[00:23:23.883] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
-[00:23:23.884] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
-[00:24:50.178] Server  LOG      ✓ Compiled in 418ms
-[00:25:18.515] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:24.856] Server  ERROR   [v0] Error fetching products: {}
-[00:25:24.893] Server  ERROR   [v0] Error fetching staff: {}
-[00:25:24.934] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:25:24.980] Server  ERROR   [v0] Error fetching products: {}
-[00:25:25.012] Server  ERROR   [v0] Error fetching staff: {}
-[00:25:25.053] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:25:25.162] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
-[00:25:25.162] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
-[00:25:25.162] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
-[00:25:25.324] Browser ERROR   [v0] fetchProducts response error: TypeError: fetch failed
-[00:25:25.324] Browser ERROR   [v0] fetchStaff response error: TypeError: fetch failed
-[00:25:25.324] Browser ERROR   [v0] fetchTransactions response error: TypeError: fetch failed
-[00:25:38.474] Server  LOG      ✓ Compiled in 416ms
-[00:25:47.413] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:54.999] Server  ERROR   [v0] Error fetching products: {}
-[00:25:55.034] Server  ERROR   [v0] Error fetching staff: {}
-[00:25:55.078] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:25:55.116] Server  ERROR   [v0] Error fetching products: {}
-[00:25:55.156] Server  ERROR   [v0] Error fetching staff: {}
-[00:25:55.208] Server  ERROR   [v0] Error fetching transactions: "TypeError: fetch failed"
-[00:26:43.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:26:44.589] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <RedirectBoundary>
-      <RedirectErrorBoundary router={{...}}>
-        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
-          <SegmentViewNode type="page" pagePath="page.tsx">
-            <SegmentTrieNode>
-            <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
-              <Home params={Promise} searchParams={Promise}>
-                <LoginPage onLogin={function bound dispatchSetState}>
-                  <div className="min-h-scre...">
-                    <Card className="w-full max...">
-                      <div data-slot="card" className="bg-card te...">
-                        <CardHeader>
-                        <CardContent className="space-y-4">
-                          <div data-slot="card-content" className="px-6 space...">
-                            <div>
-                              <label>
-                              <input
-                                type="password"
-                                value=""
-                                onChange={function onChange}
-                                placeholder="Enter password"
-                                className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:r..."
-                                onKeyPress={function onKeyPress}
-                                disabled={false}
--                               data-has-listeners="true"
-                              >
-                            ...
-          ...
-        ...
-
-[00:27:00.484] Server  LOG      ✓ Compiled in 311ms
-[00:27:02.617] Server  LOG      ✓ Compiled in 323ms
-[00:27:09.520] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:27:30.144] Browser ERROR   [v0] Error deleting product: status 404
-[01:04:23.440] Server  LOG      ✓ Compiled in 1160ms
-[01:04:25.542] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
-[01:04:26.424] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
-[01:04:29.559] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:04:31.155] Browser ERROR   uncaughtError: ReferenceError: CardContent is not defined
-[01:05:27.051] Server  LOG      ✓ Compiled in 637ms
-[01:05:27.100] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:05:27.107] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/admin-page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[01:05:27.122] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:05:29.194] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
-[01:05:30.623] Server  ERROR    ⨯ ReferenceError: CardContent is not defined
-[01:05:34.371] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:05:36.158] Browser ERROR   uncaughtError: ReferenceError: CardContent is not defined
-[01:05:54.035] Server  LOG      ✓ Compiled in 477ms
-[01:05:55.144] Browser ERROR   ./components/admin-page.tsx:74:45
-Parsing ecmascript source code failed
-  72 |                     </div>
-  73 |                   </div>
-> 74 |                 </CardContent> <CardContent className="space-y-4">
-     |                                             ^^^^^^^^^
-  75 |                   <div className="grid grid-cols-2 gap-4">
-  76 |                     <div>
-  77 |                       <p className="text-xs text-muted-foreground">Receipt Number</p>
-
-Expected ';', '}' or <eof>
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[01:05:56.142] Browser ERROR   ./components/admin-page.tsx:74:45
-Parsing ecmascript source code failed
-  72 |                     </div>
-  73 |                   </div>
-> 74 |                 </CardContent> <CardContent className="space-y-4">
-     |                                             ^^^^^^^^^
-  75 |                   <div className="grid grid-cols-2 gap-4">
-  76 |                     <div>
-  77 |                       <p className="text-xs text-muted-foreground">Receipt Number</p>
-
-Expected ';', '}' or <eof>
-
-Import traces:
-  Client Component Browser:
-    ./components/admin-page.tsx [Client Component Browser]
-    ./app/page.tsx [Client Component Browser]
-    ./app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./components/admin-page.tsx [Client Component SSR]
-    ./app/page.tsx [Client Component SSR]
-    ./app/page.tsx [Server Component]
-[01:06:01.249] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:06:01.253] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/admin-page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[01:06:01.256] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:06:01.264] Server  LOG      ✓ Compiled in 607ms
-[01:06:06.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:07:24.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:07:26.126] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <RedirectBoundary>
-      <RedirectErrorBoundary router={{...}}>
-        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
-          <SegmentViewNode type="page" pagePath="page.tsx">
-            <SegmentTrieNode>
-            <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
-              <Home params={Promise} searchParams={Promise}>
-                <LoginPage onLogin={function bound dispatchSetState}>
-                  <div className="min-h-scre...">
-                    <Card className="w-full max...">
-                      <div data-slot="card" className="bg-card te...">
-                        <CardHeader>
-                        <CardContent className="space-y-4">
-                          <div data-slot="card-content" className="px-6 space...">
-                            <div>
-                              <label>
-                              <input
-                                type="password"
-                                value=""
-                                onChange={function onChange}
-                                placeholder="Enter password"
-                                className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:r..."
-                                onKeyPress={function onKeyPress}
-                                disabled={false}
--                               data-has-listeners="true"
-                              >
-                            ...
-          ...
-        ...
-
-[01:07:55.604] Server  LOG      ✓ Compiled in 451ms
-[01:08:08.269] Browser ERROR   [v0] Error deleting product: Unknown error
-[01:11:04.777] Server  LOG        Reload env: .env.local
-[01:11:45.954] Server  LOG        Reload env: .env.local
-[01:11:49.196] Server  LOG        Reload env: .env.local
-[01:12:02.194] Server  LOG        Reload env: .env.local
-[01:12:13.586] Server  LOG        Reload env: .env.local
-[01:16:22.899] Server  LOG      ✓ Compiled in 247ms
-[01:16:34.837] Server  LOG      ✓ Compiled in 254ms
-[01:16:36.270] Server  LOG      ✓ Compiled in 260ms
+[00:00:13.288] Server  LOG      ✓ Ready in 9.6s
+[00:00:20.170] Server  LOG      ○ Compiling / ...
+[00:00:34.012] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:48.321] Server  LOG      ✓ Compiled in 407ms
+[00:08:38.444] Browser LOG     [v0] Product moved to deleted items (UI only)
+[00:08:44.892] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:15.295] Server  LOG      ✓ Compiled in 322ms
+[00:09:17.026] Server  ERROR    ⨯ ReferenceError: Button is not defined
+[00:09:18.580] Server  ERROR    ⨯ ReferenceError: Button is not defined
+[00:09:20.229] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:20.725] Browser ERROR   uncaughtError: ReferenceError: Button is not defined
+[00:09:38.466] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:38.468] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/product-grid.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:09:38.473] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:38.480] Server  LOG      ✓ Compiled in 1047ms
+[00:09:38.869] Browser ERROR   unhandledRejection: Error: No link element found for chunk /_next/static/chunks/%5Broot-of-the-server%5D__51d697a8._.css
+[00:09:40.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:27.956] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:35.589] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:12:35.589] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:12:35.589] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:12:35.589] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:12:36.401] Browser LOG     Products fetched successfully: 23 products
+[00:12:36.401] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":23}
+[00:12:36.541] Browser LOG     Products fetched successfully: 23 products
+[00:12:36.541] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":23}
+[00:12:44.051] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 0
+[00:12:44.051] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":23}
+[00:12:44.051] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":true,"refreshKey":1,"totalProducts":23}
+[00:12:44.300] Browser LOG     Products refresh successful
+[00:12:44.300] Browser LOG     ProductGrid: Refresh event received
+[00:12:44.300] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 1
+[00:12:44.300] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":true,"refreshKey":1,"totalProducts":23}
+[00:12:44.606] Browser LOG     Products fetched successfully: 23 products
+[00:12:44.606] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":23}
+[00:12:44.756] Browser LOG     Products fetched successfully: 23 products
+[00:12:44.757] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":23}
+[00:12:54.540] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 1
+[00:12:54.540] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":2,"totalProducts":23}
+[00:12:54.540] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":true,"refreshKey":2,"totalProducts":23}
+[00:12:54.814] Browser LOG     Products refresh successful
+[00:12:54.814] Browser LOG     ProductGrid: Refresh event received
+[00:12:54.814] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 2
+[00:12:54.814] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":true,"refreshKey":2,"totalProducts":23}
+[00:12:55.280] Browser LOG     Products fetched successfully: 23 products
+[00:12:55.280] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":false,"refreshKey":2,"totalProducts":23}
+[00:12:55.280] Browser LOG     Products fetched successfully: 23 products
+[00:12:55.280] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":false,"refreshKey":2,"totalProducts":23}

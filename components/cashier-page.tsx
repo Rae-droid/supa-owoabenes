@@ -61,6 +61,8 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   const [paymentError, setPaymentError] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [deletedProductIds, setDeletedProductIds] = useState<Set<string>>(new Set())
+  const [refreshTrigger, setRefreshTrigger] = useState(0) // ADD THIS LINE - for simple prop-based refresh
   const receiptRef = useRef<any>(null)
 
   const {
@@ -72,20 +74,29 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   useEffect(() => {
     mutateTransactions()
   }, [])
+
+  // FIXED refreshProducts function - SIMPLER AND MORE RELIABLE
   const refreshProducts = async () => {
     setIsRefreshing(true)
     try {
+      // Simple approach: Increment refresh trigger which ProductGrid listens to
+      setRefreshTrigger(prev => prev + 1)
+      
+      // Optional: Also fetch to verify data is fresh
       const res = await fetch("/api/products")
       const result = await res.json()
+      
       if (result.success) {
-        // Dispatch event for ProductGrid to listen
-        window.dispatchEvent(
-          new CustomEvent("productsRefresh", { detail: result.data })
-        )
+        console.log("Products refresh successful")
+        // Dispatch event as backup (but ProductGrid should use refreshTrigger)
+        window.dispatchEvent(new Event("productsRefresh"))
+      } else {
+        console.error("Failed to refresh products:", result.error)
+        alert("Failed to refresh products")
       }
     } catch (err) {
       console.error("Product refresh error:", err)
-      alert("Failed to refresh products")
+      alert("Failed to refresh products: " + (err.message || "Network error"))
     } finally {
       setIsRefreshing(false)
     }
@@ -114,21 +125,11 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       ]
     })
 
-    // Refetch products to update stock display
+    // SIMPLIFIED: Just trigger a refresh after adding to cart
     setTimeout(() => {
-      const productGrid = document.querySelector("[data-product-grid]")
-      if (productGrid) {
-        fetch("/api/products")
-          .then((res) => res.json())
-          .then((result) => {
-            if (result.success && result.data) {
-              // Trigger ProductGrid refetch by updating a ref or state
-              window.dispatchEvent(new CustomEvent("productsNeedRefresh", { detail: result.data }))
-            }
-          })
-          .catch((err) => console.error("[v0] Error refetching products:", err))
-      }
-    }, 100);
+      // Use the refresh trigger instead of dispatching events
+      setRefreshTrigger(prev => prev + 1)
+    }, 100)
   }
 
   const removeFromCart = (id: string) => {
@@ -199,6 +200,9 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       setShowReceipt(true)
       resetCart()
       setPaymentError("")
+      
+      // Refresh products after checkout to update stock
+      setRefreshTrigger(prev => prev + 1)
     } catch (error) {
       console.error("[v0] Checkout error:", error)
       setPaymentError("An error occurred during checkout")
@@ -252,15 +256,16 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     return methods[method] || method
   }
 
-  useEffect(() => {
-    const handleRefresh = (e: any) => {
-      // Re-fetch or update your products state
-      refreshProducts()
-    }
-    
-    window.addEventListener("productsRefresh", handleRefresh)
-    return () => window.removeEventListener("productsRefresh", handleRefresh)
-  }, [])
+  // Remove this useEffect - it's causing issues by listening to its own events
+  // useEffect(() => {
+  //   const handleRefresh = (e: any) => {
+  //     // Re-fetch or update your products state
+  //     refreshProducts()
+  //   }
+  //   
+  //   window.addEventListener("productsRefresh", handleRefresh)
+  //   return () => window.removeEventListener("productsRefresh", handleRefresh)
+  // }, [])
 
   return (
     <div className="w-full min-h-screen bg-background">
@@ -303,16 +308,27 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
               className="bg-primary text-white"
             >
               {isRefreshing ? (
-                <span>Refreshing...</span>
+                <div className="flex items-center gap-2">
+                  <LoadingSpinner size="sm" />
+                  <span>Refreshing...</span>
+                </div>
               ) : (
-                "🔄 Refresh Products"
+                <div className="flex items-center gap-2">
+                  <span>🔄</span>
+                  <span>Refresh Products</span>
+                </div>
               )}
             </Button>
           </div>
 
           {/* Products Grid - scrollable */}
           <div className="flex-1 overflow-y-auto" data-product-grid>
-            <ProductGrid onAddToCart={addToCart} />
+            {/* PASS refreshTrigger prop to ProductGrid */}
+            <ProductGrid 
+              onAddToCart={addToCart} 
+              deletedProductIds={deletedProductIds}
+              refreshKey={refreshTrigger} // ADD THIS PROP
+            />
           </div>
         </div>
 
@@ -746,4 +762,3 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
     </div>
   )
 }
-

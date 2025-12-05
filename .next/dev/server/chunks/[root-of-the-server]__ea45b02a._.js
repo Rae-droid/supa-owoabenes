@@ -46,8 +46,8 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/module/index.js [app-route] (ecmascript) <locals>");
 ;
-const supabaseUrl = ("TURBOPACK compile-time value", "https://rxzktidjzmjmijhdlmxo.supabase.co");
-const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4emt0aWRqem1qbWlqaGRsbXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM2NjczNTUsImV4cCI6MjA3OTI0MzM1NX0.GeTlIoIC0sJ6RmxOVWuyb5sDFf22HXAzSZHlDAAVD5U");
+const supabaseUrl = ("TURBOPACK compile-time value", "https://kiclnmpvaebuzcndebxz.supabase.co");
+const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpY2xubXB2YWVidXpjbmRlYnh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwOTQxNTEsImV4cCI6MjA3OTY3MDE1MX0.UQ8OzGKjKHDcD6xl3GN0p3r3FlEXyWMSOTukkXp58QY");
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
 ;

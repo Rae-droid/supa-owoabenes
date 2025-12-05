@@ -20,14 +20,17 @@ interface Product {
 }
 
 interface ProductGridProps {
-  onAddToCart: (product: Product) => void
+  onAddToCart: (product: any) => void
+  deletedProductIds?: Set<string>
+  refreshKey?: number // ADD THIS PROP
 }
 
-export default function ProductGrid({ onAddToCart }: ProductGridProps) {
+export default function ProductGrid({ onAddToCart, deletedProductIds = new Set(), refreshKey = 0 }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const [internalRefreshCounter, setInternalRefreshCounter] = useState(0) // Renamed
 
   const fetchProducts = async () => {
     setIsLoading(true)
@@ -36,6 +39,9 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
       const result = await res.json()
       if (result.success && result.data && result.data.length > 0) {
         setProducts(result.data)
+        console.log("Products fetched successfully:", result.data.length, "products")
+      } else {
+        console.log("No products found or API error")
       }
     } catch (error) {
       console.error("[v0] Error fetching products:", error)
@@ -44,33 +50,57 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
     }
   }
 
-  // Initial fetch
+  // Initial fetch and fetch on refreshKey or internalRefreshCounter change
   useEffect(() => {
+    console.log("ProductGrid useEffect triggered, refreshKey:", refreshKey, "internalRefreshCounter:", internalRefreshCounter)
     fetchProducts()
-  }, [])
+  }, [refreshKey, internalRefreshCounter]) // ADD refreshKey to dependencies
 
-  // Listen for refresh events
+  // Listen for ALL refresh events - SIMPLIFIED
   useEffect(() => {
     const handleRefresh = () => {
-      fetchProducts()
+      console.log("ProductGrid: Refresh event received")
+      setInternalRefreshCounter(prev => prev + 1)
     }
     
+    // Only listen to the main event
     window.addEventListener("productsRefresh", handleRefresh)
-    return () => window.removeEventListener("productsRefresh", handleRefresh)
+    
+    return () => {
+      window.removeEventListener("productsRefresh", handleRefresh)
+    }
   }, [])
 
-  const categories = [...new Set(products.map((p) => p.category))]
-  const filteredProducts = products.filter((p) => {
+  // Filter out deleted products first
+  const availableProducts = products.filter((product) => !deletedProductIds.has(product.id))
+
+  const categories = [...new Set(availableProducts.map((p) => p.category))]
+  
+  // Apply category and search filters to available products only
+  const filteredProducts = availableProducts.filter((p) => {
     const matchesCategory = !selectedCategory || p.category === selectedCategory
     const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase())
     const hasStock = (p.quantity || 0) > 0
     return matchesCategory && matchesSearch && hasStock
   })
 
+  // Debug logging
+  useEffect(() => {
+    console.log("ProductGrid state:", {
+      totalProducts: products.length,
+      availableProducts: availableProducts.length,
+      filteredProducts: filteredProducts.length,
+      isLoading,
+      refreshKey,
+      internalRefreshCounter
+    })
+  }, [products, isLoading, refreshKey, internalRefreshCounter])
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-96">
         <LoadingSpinner size="lg" />
+        <span className="ml-2">Loading products...</span>
       </div>
     )
   }
@@ -121,10 +151,18 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
         </CardContent>
       </Card>
 
-      {isLoading ? (
-        <div className="flex justify-center py-12">
-          <LoadingSpinner size="lg" variant="primary" label="Loading products..." />
-        </div>
+      <div className="text-xs text-muted-foreground mb-2">
+        Showing {filteredProducts.length} of {availableProducts.length} products
+        {refreshKey > 0 && ` • Refreshed ${refreshKey} times`}
+      </div>
+
+      {filteredProducts.length === 0 ? (
+        <Card className="p-6 text-center">
+          <p className="text-muted-foreground">No products found matching your search or category.</p>
+          <Button onClick={() => setInternalRefreshCounter(prev => prev + 1)} className="mt-2" size="sm">
+            Refresh
+          </Button>
+        </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
@@ -166,12 +204,6 @@ export default function ProductGrid({ onAddToCart }: ProductGridProps) {
             </Card>
           ))}
         </div>
-      )}
-
-      {!isLoading && filteredProducts.length === 0 && (
-        <Card className="p-6 text-center">
-          <p className="text-muted-foreground">No products found matching your search or category.</p>
-        </Card>
       )}
     </div>
   )
