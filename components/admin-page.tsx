@@ -18,7 +18,10 @@ interface Transaction {
   discount: number
   paymentMethod: string
   customerName?: string
+  customerPhone?: string        // <-- Add this
   amountReceived?: number
+  change?: number               // <-- Add this
+  receiptNumber?: string        // <-- Add this
 }
 
 interface Product {
@@ -1116,11 +1119,15 @@ const handleDeleteProduct = async (productId: string) => {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-xs text-muted-foreground">Receipt Number</p>
-                      <p className="font-semibold">{selectedTransaction.id}</p>
+                      <p className="font-semibold">{selectedTransaction.receiptNumber || selectedTransaction.id}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Customer Name</p>
                       <p className="font-semibold">{selectedTransaction.customerName || "Walk-in"}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Customer Phone</p>
+                      <p className="font-semibold">{selectedTransaction.customerPhone || "-"}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Total</p>
@@ -1132,9 +1139,7 @@ const handleDeleteProduct = async (productId: string) => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Date</p>
-                      <p className="font-semibold">
-                        {new Date(selectedTransaction.date).toLocaleDateString()}
-                      </p>
+                      <p className="font-semibold">{new Date(selectedTransaction.date).toLocaleDateString()}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Cashier</p>
@@ -1142,13 +1147,15 @@ const handleDeleteProduct = async (productId: string) => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Time:</p>
-                      <p className="font-semibold">
-                        {new Date(selectedTransaction.date).toLocaleTimeString()}
-                      </p>
+                      <p className="font-semibold">{new Date(selectedTransaction.date).toLocaleTimeString()}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Amount Received</p>
                       <p className="font-semibold">GHS {selectedTransaction.amountReceived?.toFixed(2)}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Change</p>
+                      <p className="font-semibold">GHS {selectedTransaction.change?.toFixed(2) || "-"}</p>
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Profit</p>
@@ -1163,7 +1170,6 @@ const handleDeleteProduct = async (productId: string) => {
                       </p>
                     </div>
                   </div>
-
                   <div>
                     <p className="text-xs text-muted-foreground mb-2">Items</p>
                     <div className="space-y-2">

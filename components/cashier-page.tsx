@@ -182,17 +182,17 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       const transactionData = {
         items: cartItems.map((item) => ({
           ...item,
-          cost_price: item.wholeSalePrice, // Store wholesale price as cost for profit calculations
+          cost_price: item.wholeSalePrice,
         })),
         subtotal: transactionSubtotal,
         discount: transactionDiscount,
         total: transactionTotal,
         payment_method: selectedPaymentMethod,
         customer_name: customerName || "Walk-in Customer",
-        customer_phone: receiptCustomerPhone, // <-- Add this line
+        customer_phone: receiptCustomerPhone, // <-- Save customer number
         amount_received: Number(amountReceived),
-        change: Number(amountReceived) - transactionTotal,
-        receipt_number: `RCP-${Date.now()}`,
+        change: Number(amountReceived) - transactionTotal, // <-- Save change
+        receipt_number: `RCP-${Date.now()}`, // <-- Save receipt number
       }
 
       await addTransactionToDB(transactionData)

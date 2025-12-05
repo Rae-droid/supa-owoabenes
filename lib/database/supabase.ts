@@ -41,18 +41,16 @@ export async function addTransactionToDB(transactionData: any) {
     .from('transactions')
     .insert([
       {
-        // ...other fields
         customer_name: transactionData.customer_name,
-        customer_phone: transactionData.customer_phone, // <-- Make sure this is included
+        customer_phone: transactionData.customer_phone, // <-- Already here
         subtotal: transactionData.subtotal,
         discount: transactionData.discount,
         total: transactionData.total,
         payment_method: transactionData.payment_method,
         amount_received: transactionData.amount_received,
-        change: transactionData.change,
-        receipt_number: transactionData.receipt_number,
+        change: transactionData.change, // <-- Already here
+        receipt_number: transactionData.receipt_number, // <-- Already here
         items: transactionData.items,
-        // add any other fields you need
       }
     ])
   if (error) {
