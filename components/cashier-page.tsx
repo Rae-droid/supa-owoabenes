@@ -749,16 +749,14 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
               <CardContent className="pt-6 flex-1 overflow-y-auto flex flex-col">
                 <div ref={receiptRef} className="flex-1">
                   <ReceiptComponent
-                    items={lastTransaction}
-                    discount={
-                      (lastTransaction.reduce((sum, item) => sum + item.subtotal, 0) * discountPercentage) / 100
-                    }
-                    customerName={receiptCustomerName}
-                    customerPhone={receiptCustomerPhone} // <-- Add this line
-                    cashierName="Benedicta Sarpong"
-                    amountReceived={receiptAmountReceived}
-                    change={receiptAmountReceived - totalAmount}
-                    paymentMethod={formatPaymentMethod(selectedPaymentMethod)}
+                    items={lastTransaction[0]?.items || []}
+                    discount={lastTransaction[0]?.discount || 0}
+                    customerName={lastTransaction[0]?.customer_name || ""}
+                    customerPhone={lastTransaction[0]?.customer_phone || ""}
+                    cashierName={lastTransaction[0]?.cashierName || "Benedicta Sarpong"}
+                    amountReceived={lastTransaction[0]?.amount_received || 0}
+                    change={lastTransaction[0]?.change || 0}
+                    paymentMethod={formatPaymentMethod(lastTransaction[0]?.payment_method || selectedPaymentMethod)}
                   />
                 </div>
                 <div className="flex gap-3 mt-6 flex-shrink-0">

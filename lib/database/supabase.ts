@@ -32,3 +32,31 @@ export const supabaseServer = (() => {
   }
   return createClient(supabaseUrl, key)
 })()
+
+export async function addTransactionToDB(transactionData: any) {
+  if (!supabaseServer) {
+    throw new Error("Supabase server client not initialized")
+  }
+  const { data, error } = await supabaseServer
+    .from('transactions')
+    .insert([
+      {
+        // ...other fields
+        customer_name: transactionData.customer_name,
+        customer_phone: transactionData.customer_phone, // <-- Make sure this is included
+        subtotal: transactionData.subtotal,
+        discount: transactionData.discount,
+        total: transactionData.total,
+        payment_method: transactionData.payment_method,
+        amount_received: transactionData.amount_received,
+        change: transactionData.change,
+        receipt_number: transactionData.receipt_number,
+        items: transactionData.items,
+        // add any other fields you need
+      }
+    ])
+  if (error) {
+    throw error
+  }
+  return data
+}
