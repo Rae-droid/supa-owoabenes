@@ -17,8 +17,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
   const [isLoadingAdmin, setIsLoadingAdmin] = useState(false)
 
   const getCurrentHour = () => new Date().getHours()
-  const shopOpen = 8
-  const shopClose = 20 // 8 PM in 24-hour format
+  const shopOpen = 5
+  const shopClose = 23 // 11 PM in 24-hour format
   const currentHour = getCurrentHour()
   const isShopOpen = currentHour >= shopOpen && currentHour < shopClose
   const timeUntilOpen = shopOpen - currentHour
@@ -32,13 +32,13 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     }
 
     // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 800))
+    await new Promise((resolve) => setTimeout(resolve, 500))
 
     if (role === "cashier" && !isShopOpen) {
       if (currentHour < shopOpen) {
-        setError(`Shop opens at 8:00 AM. Please return in ${timeUntilOpen} hour(s).`)
+        setError(`Shop opens at 5:00 AM. Please return in ${timeUntilOpen} hour(s).`)
       } else {
-        setError(`Shop closed at 8:00 PM. Please return tomorrow at 8:00 AM.`)
+        setError(`Shop closed at 11:00 PM. Please return tomorrow at 5:00 AM.`)
       }
       setIsLoadingCashier(false)
       return

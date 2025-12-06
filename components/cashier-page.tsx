@@ -57,6 +57,7 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
   const [showCheckoutPanel, setShowCheckoutPanel] = useState(true)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("cash")
   const [receiptCustomerName, setReceiptCustomerName] = useState("")
+  const [receiptCustomerPhone, setReceiptCustomerPhone] = useState("")
   const [receiptAmountReceived, setReceiptAmountReceived] = useState(0)
   const [paymentError, setPaymentError] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
@@ -233,8 +234,8 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
       const hours = now.getHours()
       const minutes = now.getMinutes()
 
-      // Enable logout only at 5pm (17:00) or later
-      setIsLogoutEnabled(hours >= 17)
+      // Enable logout only at 5am (5:00) or later
+      setIsLogoutEnabled(hours >= 23)
     }
 
     // Check immediately on mount
@@ -283,13 +284,13 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
             onClick={onLogout}
             disabled={!isLogoutEnabled}
             className="bg-destructive hover:bg-destructive/90 text-destructive-foreground disabled:opacity-50 disabled:cursor-not-allowed"
-            title={!isLogoutEnabled ? "Logout available at 5:00 PM" : ""}
+            title={!isLogoutEnabled ? "Logout available at 11:00 PM" : ""}
           >
             Logout
           </Button>
           {!isLogoutEnabled && (
             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-              Available at 5:00 PM
+              Available at 11:00 PM
             </span>
           )}
         </div>
@@ -360,9 +361,17 @@ export default function CashierPage({ onAddTransaction, onLogout }: CashierPageP
                   </CardHeader>
                   <CardContent>
                     <Input
-                      placeholder="Enter customer name (optional)"
+                      placeholder="Enter customer name (required)"
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
+                      className="text-sm border-primary/30 focus:border-primary"
+                    />
+                  </CardContent>
+                  <CardContent>
+                    <Input
+                      placeholder="Dont Enter Please..Not Ready Yet"
+                      value={receiptCustomerPhone}
+                      onChange={(e) => setReceiptCustomerPhone(e.target.value)}
                       className="text-sm border-primary/30 focus:border-primary"
                     />
                   </CardContent>

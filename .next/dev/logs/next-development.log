@@ -1,48 +1,29 @@
-[00:00:13.288] Server  LOG      ✓ Ready in 9.6s
-[00:00:20.170] Server  LOG      ○ Compiling / ...
-[00:00:34.012] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:48.321] Server  LOG      ✓ Compiled in 407ms
-[00:08:38.444] Browser LOG     [v0] Product moved to deleted items (UI only)
-[00:08:44.892] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:15.295] Server  LOG      ✓ Compiled in 322ms
-[00:09:17.026] Server  ERROR    ⨯ ReferenceError: Button is not defined
-[00:09:18.580] Server  ERROR    ⨯ ReferenceError: Button is not defined
-[00:09:20.229] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:20.725] Browser ERROR   uncaughtError: ReferenceError: Button is not defined
-[00:09:38.466] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:09:38.468] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/product-grid.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:09:38.473] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:09:38.480] Server  LOG      ✓ Compiled in 1047ms
-[00:09:38.869] Browser ERROR   unhandledRejection: Error: No link element found for chunk /_next/static/chunks/%5Broot-of-the-server%5D__51d697a8._.css
-[00:09:40.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:27.956] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:35.589] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
-[00:12:35.589] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
-[00:12:35.589] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
-[00:12:35.589] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
-[00:12:36.401] Browser LOG     Products fetched successfully: 23 products
-[00:12:36.401] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":23}
-[00:12:36.541] Browser LOG     Products fetched successfully: 23 products
-[00:12:36.541] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":23}
-[00:12:44.051] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 0
-[00:12:44.051] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":23}
-[00:12:44.051] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":0,"isLoading":true,"refreshKey":1,"totalProducts":23}
-[00:12:44.300] Browser LOG     Products refresh successful
-[00:12:44.300] Browser LOG     ProductGrid: Refresh event received
-[00:12:44.300] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 1
-[00:12:44.300] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":true,"refreshKey":1,"totalProducts":23}
-[00:12:44.606] Browser LOG     Products fetched successfully: 23 products
-[00:12:44.606] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":23}
-[00:12:44.756] Browser LOG     Products fetched successfully: 23 products
-[00:12:44.757] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":1,"totalProducts":23}
-[00:12:54.540] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 1
-[00:12:54.540] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":false,"refreshKey":2,"totalProducts":23}
-[00:12:54.540] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":1,"isLoading":true,"refreshKey":2,"totalProducts":23}
-[00:12:54.814] Browser LOG     Products refresh successful
-[00:12:54.814] Browser LOG     ProductGrid: Refresh event received
-[00:12:54.814] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 2
-[00:12:54.814] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":true,"refreshKey":2,"totalProducts":23}
-[00:12:55.280] Browser LOG     Products fetched successfully: 23 products
-[00:12:55.280] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":false,"refreshKey":2,"totalProducts":23}
-[00:12:55.280] Browser LOG     Products fetched successfully: 23 products
-[00:12:55.280] Browser LOG     ProductGrid state: {"availableProducts":23,"filteredProducts":23,"internalRefreshCounter":2,"isLoading":false,"refreshKey":2,"totalProducts":23}
+[00:00:10.795] Server  LOG      ✓ Ready in 7.6s
+[00:00:31.329] Server  LOG      ○ Compiling / ...
+[00:00:41.840] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:10.708] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:01:10.708] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:01:10.708] Browser LOG     ProductGrid useEffect triggered, refreshKey: 0 internalRefreshCounter: 0
+[00:01:10.708] Browser LOG     ProductGrid state: {"availableProducts":0,"filteredProducts":0,"internalRefreshCounter":0,"isLoading":true,"refreshKey":0,"totalProducts":0}
+[00:01:14.294] Browser LOG     Products fetched successfully: 77 products
+[00:01:14.294] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":77}
+[00:01:14.295] Browser LOG     Products fetched successfully: 77 products
+[00:01:14.295] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":0,"totalProducts":77}
+[00:01:17.126] Browser LOG     ProductGrid useEffect triggered, refreshKey: 1 internalRefreshCounter: 0
+[00:01:17.126] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":77}
+[00:01:17.126] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":true,"refreshKey":1,"totalProducts":77}
+[00:01:17.552] Browser LOG     Products fetched successfully: 77 products
+[00:01:17.552] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":1,"totalProducts":77}
+[00:01:43.963] Browser LOG     ProductGrid useEffect triggered, refreshKey: 2 internalRefreshCounter: 0
+[00:01:43.963] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":2,"totalProducts":77}
+[00:01:43.963] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":true,"refreshKey":2,"totalProducts":77}
+[00:01:44.406] Browser LOG     Products fetched successfully: 77 products
+[00:01:44.407] Browser LOG     ProductGrid state: {"availableProducts":77,"filteredProducts":77,"internalRefreshCounter":0,"isLoading":false,"refreshKey":2,"totalProducts":77}
+[00:03:36.862] Server  LOG      ✓ Compiled in 295ms
+[00:03:40.882] Server  LOG      ✓ Compiled in 372ms
+[00:03:45.175] Server  LOG      ✓ Compiled in 338ms
+[00:03:47.708] Server  LOG      ✓ Compiled in 186ms
+[00:03:51.683] Server  LOG      ✓ Compiled in 175ms
+[00:03:53.096] Server  LOG      ✓ Compiled in 306ms
+[00:03:57.439] Server  LOG      ✓ Compiled in 188ms
+[00:03:59.604] Server  LOG      ✓ Compiled in 362ms

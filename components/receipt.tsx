@@ -15,6 +15,7 @@ interface CartItem {
 interface ReceiptProps {
   items: CartItem[]
   customerName?: string
+  customerPhone?: number
   discount?: number
   paymentMethod?: string
   amountReceived?: number
@@ -23,6 +24,7 @@ interface ReceiptProps {
 export default function Receipt({
   items,
   customerName = "",
+  customerPhone = 0,
   discount = 0,
   paymentMethod = "cash",
   amountReceived = 0,
@@ -51,11 +53,11 @@ export default function Receipt({
       <div
         id="receipt-content"
         style={{
-          width: "80mm",
+          width: "100mm",
           margin: "0 auto",
           background: "white",
           fontFamily: "monospace",
-          fontSize: "13px",
+          fontSize: "15px",
           padding: "8mm",
           color: "black",
           lineHeight: "1.4",
@@ -63,7 +65,7 @@ export default function Receipt({
       >
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: "8px" }}>
-          <img src="/back.jpeg" alt="Logo" style={{ width: "120px", height: "120px", objectFit: "contain" }} />
+          <img src="/back.jpeg" alt="Logo" style={{ width: "120px", height: "120px", objectFit: "contain", fontWeight: "bold" }} />
         </div>
 
         {/* Header */}
@@ -84,6 +86,7 @@ export default function Receipt({
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Time:</span><span>{now.toLocaleTimeString()}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "N/A"}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
           
         </div>
@@ -134,7 +137,7 @@ export default function Receipt({
 
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: "8px" }}>
-          <div>Tel: 0549241991/ 0548048520</div>
+          <div style={{fontWeight: "bold"}}>Tel: 0549241991/ 0548048520</div>
           <div>Thank you for your purchase!</div>
           <div>Please visit us again</div>
           <div style={{ fontWeight: "bold", marginTop: "6px" }}>*** END OF RECEIPT ***</div>

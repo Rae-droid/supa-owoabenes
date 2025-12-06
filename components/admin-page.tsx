@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -53,6 +53,21 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
   const [activeTab, setActiveTab] = useState("dashboard")
+  // Add this debug useEffect
+useEffect(() => {
+  console.log("AdminPage component loaded")
+  
+  // Check if there are any old event listeners
+  const checkForOldListeners = () => {
+    console.log("Checking for old listeners...")
+  }
+  
+  window.addEventListener("productDeleted", checkForOldListeners)
+  
+  return () => {
+    window.removeEventListener("productDeleted", checkForOldListeners)
+  }
+}, [])
 
   const [products, setProducts] = useState<Product[]>([])
   const [deletedProducts, setDeletedProducts] = useState<Product[]>([])
@@ -64,12 +79,16 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   const [isAddingProduct, setIsAddingProduct] = useState(false)
   const [isAddingStaff, setIsAddingStaff] = useState(false)
   const [productSearch, setProductSearch] = useState("")
+  const [isLoadingDeleted, setIsLoadingDeleted] = useState(false)
 
   useEffect(() => {
     fetchProducts()
     fetchStaff()
     fetchTransactions()
+    fetchDeletedProducts()
   }, [])
+
+  
 
   const fetchProducts = async () => {
     try {
@@ -114,7 +133,6 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
         const formattedTransactions =
           result.data?.map((t: any) => ({
             id: t.id,
-            // keep the raw ISO timestamp so new Date(...) works reliably later
             date: t.created_at,
             total: t.total,
             itemCount: t.items?.length || 0,
@@ -132,6 +150,29 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
       console.error("[v0] Error fetching transactions:", error)
     } finally {
       setIsLoadingTransactions(false)
+    }
+  }
+
+  const fetchDeletedProducts = async () => {
+    try {
+      setIsLoadingDeleted(true)
+      const res = await fetch("/api/products/delete")
+      const result = await res.json()
+      if (result.success && result.data) {
+        // Map the database data to match your Product interface
+        const mappedProducts = result.data.map((item: any) => ({
+          ...item.product_data,
+          id: item.product_id // Use the original product ID
+        }))
+        setDeletedProducts(mappedProducts)
+        console.log("Fetched deleted products:", mappedProducts.length)
+      } else {
+        console.error("[v0] fetchDeletedProducts response error:", result.error)
+      }
+    } catch (error) {
+      console.error("[v0] Error fetching deleted products:", error)
+    } finally {
+      setIsLoadingDeleted(false)
     }
   }
 
@@ -261,41 +302,126 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
   }
 
   const [deletingProductId, setDeletingProductId] = useState<string | null>(null)
+  const [restoringProductId, setRestoringProductId] = useState<string | null>(null)
 
-  // ---------- UI-ONLY DELETE (no backend) ----------
-  const handleDeleteProduct = (productId: string) => {
-    if (!confirm("Are you sure you want to delete this product?")) return
-
-    setDeletingProductId(productId)
-
-    setTimeout(() => {
-      const deletedProduct = products.find((p) => p.id === productId)
-      if (deletedProduct) {
-        setProducts((prev) => prev.filter((p) => p.id !== productId))
-        setDeletedProducts((prev) => [deletedProduct, ...prev])
-
-        // Dispatch event to notify cashier page
-        window.dispatchEvent(new CustomEvent("productDeleted", { detail: productId }))
-
-        console.log("[v0] Product moved to deleted items (UI only)")
-      }
-      setDeletingProductId(null)
-    }, 600)
+  // ---------- DATABASE-INTEGRATED DELETE ----------
+const handleDeleteProduct = async (productId: string) => {
+  
+  console.log("🎯🎯🎯 DATABASE DELETE FUNCTION IS RUNNING 🎯🎯🎯")
+  
+  console.log("=== DELETE PRODUCT START ===")
+  console.log("Product ID to delete:", productId)
+  
+  if (!confirm("Are you sure you want to delete this product? It will be archived in the database.")) {
+    console.log("Delete cancelled by user")
+    return
   }
-  // -------------------------------------------
 
-  const handleRestoreProduct = (productId: string) => {
-    const restoredProduct = deletedProducts.find((p) => p.id === productId)
-    if (restoredProduct) {
-      setDeletedProducts((prev) => prev.filter((p) => p.id !== productId))
-      setProducts((prev) => [restoredProduct, ...prev])
+  setDeletingProductId(productId)
+  
+  try {
+    const productToDelete = products.find((p) => p.id === productId)
+    if (!productToDelete) {
+      console.error("Product not found in local state")
+      alert("Product not found")
+      return
+    }
+
+    console.log("Product found:", productToDelete.name)
+    console.log("Preparing API request...")
+
+    // Call API to delete from database
+    const response = await fetch("/api/products/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        productId,
+        productData: productToDelete,
+        deletedBy: "Admin",
+        reason: "Manual deletion by admin"
+      }),
+    })
+
+    console.log("API Response status:", response.status)
+    console.log("API Response headers:", response.headers)
+    
+    const result = await response.json()
+    console.log("API Response JSON:", result)
+    
+    if (result.success) {
+      console.log("API call successful, updating local state...")
+      
+      // Update local state
+      setProducts((prev) => prev.filter((p) => p.id !== productId))
+      
+      console.log("Refreshing deleted products from database...")
+      // Refresh deleted products from database
+      await fetchDeletedProducts()
 
       // Dispatch event to notify cashier page
-      window.dispatchEvent(new CustomEvent("productRestored", { detail: productId }))
+      window.dispatchEvent(new CustomEvent("productDeleted", { detail: productId }))
 
-      console.log("[v0] Product restored successfully")
+      console.log("Product deleted and archived successfully!")
+      alert("Product deleted and archived successfully")
+    } else {
+      console.error("API returned error:", result.error)
+      alert("Failed to delete product: " + result.error)
+    }
+  } catch (error) {
+    console.error("Error in handleDeleteProduct:", error)
+    alert("Failed to delete product: " + (error instanceof Error ? error.message : String(error)))
+  } finally {
+    console.log("=== DELETE PRODUCT END ===")
+    setDeletingProductId(null)
+  }
+}
+  // ---------- DATABASE-INTEGRATED RESTORE ----------
+  const handleRestoreProduct = async (productId: string) => {
+    const productToRestore = deletedProducts.find((p) => p.id === productId)
+    if (!productToRestore) return
+
+    if (!confirm(`Restore "${productToRestore.name}"?`)) return
+
+    setRestoringProductId(productId)
+
+    try {
+      // Call API to restore product
+      const response = await fetch("/api/products/delete", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          deletedProductId: productId,
+          productData: productToRestore
+        }),
+      })
+
+      const result = await response.json()
+      
+      if (result.success) {
+        // Update local state
+        setDeletedProducts((prev) => prev.filter((p) => p.id !== productId))
+        setProducts((prev) => [productToRestore, ...prev])
+
+        // Dispatch event to notify cashier page
+        window.dispatchEvent(new CustomEvent("productRestored", { detail: productId }))
+
+        console.log("[v0] Product restored successfully")
+        alert("Product restored successfully")
+      } else {
+        alert("Failed to restore product: " + result.error)
+      }
+    } catch (error) {
+      console.error("[v0] Error restoring product:", error)
+      alert("Failed to restore product")
+    } finally {
+      setRestoringProductId(null)
     }
   }
+  // -------------------------------------------
 
   const filteredTransactions = transactions.filter(
     (t) =>
@@ -724,12 +850,12 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                             </p>
                           </div>
 
-                          {/* Delete button (UI-only) */}
-                          <Button
-                            onClick={() => handleDeleteProduct(product.id)}
-                            className="mt-3 bg-destructive hover:bg-destructive/90 text-destructive-foreground"
-                            disabled={deletingProductId === product.id}
-                          >
+                          {/* Delete button (DATABASE-INTEGRATED) */}
+                        <Button
+                         onClick={() => handleDeleteProduct(product.id)}
+                         className="mt-3 bg-destructive hover:bg-destructive/90 text-destructive-foreground"
+                         disabled={deletingProductId === product.id}
+                        >
                             {deletingProductId === product.id ? (
                               <div className="flex items-center gap-2">
                                 <LoadingSpinner size="sm" variant="destructive" />
@@ -753,11 +879,27 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
           <TabsContent value="deleted" className="mt-4">
             <Card>
               <CardHeader>
-                <CardTitle>Deleted Products (UI-only)</CardTitle>
-                {/* <CardDescription>Items deleted from the interface are stored here. Not persisted to backend.</CardDescription> */}
+                <div className="flex justify-between items-center">
+                  <div>
+                    <CardTitle>Deleted Products</CardTitle>
+                    <CardDescription>Archived in database. Click "Restore" to bring back to products.</CardDescription>
+                  </div>
+                  <Button 
+                    onClick={fetchDeletedProducts} 
+                    variant="outline" 
+                    size="sm"
+                    disabled={isLoadingDeleted}
+                  >
+                    {isLoadingDeleted ? "Refreshing..." : "Refresh"}
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
-                {deletedProducts.length > 0 ? (
+                {isLoadingDeleted ? (
+                  <div className="flex justify-center py-8">
+                    <LoadingSpinner size="md" variant="primary" label="Loading deleted products..." />
+                  </div>
+                ) : deletedProducts.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {deletedProducts.map((product) => (
                       <Card key={product.id} className="overflow-hidden border-destructive/50 bg-destructive/5">
@@ -771,7 +913,7 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                         <CardContent className="p-4">
                           <p className="font-bold text-sm line-through text-muted-foreground">{product.name}</p>
                           <p className="text-xs text-muted-foreground">{product.brand_name}</p>
-                          <p className="text-xs text-muted-foreground mb-2">Stock: {product.quantity}</p>
+                          <p className="text-xs text-muted-foreground mb-2">Stock at deletion: {product.quantity}</p>
                           <div className="space-y-1 text-xs">
                             <p>
                               <span className="font-semibold">Wholesale:</span> GHS {product.wholesale_price}
@@ -781,21 +923,28 @@ export default function AdminPage({ onLogout }: AdminPageProps) {
                             </p>
                           </div>
                           <Button
-                            onClick={() => {
-                              // restore locally (UI-only)
-                              setDeletedProducts((prev) => prev.filter((p) => p.id !== product.id))
-                              setProducts((prev) => [product, ...prev])
-                            }}
+                            onClick={() => handleRestoreProduct(product.id)}
                             className="mt-2 w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                            disabled={restoringProductId === product.id}
                           >
-                            Restore
+                            {restoringProductId === product.id ? (
+                              <div className="flex items-center gap-2">
+                                <LoadingSpinner size="sm" variant="primary" />
+                                <span>Restoring...</span>
+                              </div>
+                            ) : (
+                              "Restore"
+                            )}
                           </Button>
                         </CardContent>
                       </Card>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-muted-foreground text-center py-8">No deleted products</p>
+                  <div className="text-center py-8">
+                    <p className="text-muted-foreground mb-2">No deleted products in database</p>
+                    <p className="text-xs text-muted-foreground">Deleted products will appear here and persist after refresh</p>
+                  </div>
                 )}
               </CardContent>
             </Card>
