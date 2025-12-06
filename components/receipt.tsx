@@ -86,7 +86,7 @@ export default function Receipt({
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Time:</span><span>{now.toLocaleTimeString()}</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Cashier:</span><span style={{ fontWeight: "bold" }}>Benedicta Sarpong</span></div>
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Customer:</span><span>{customerName || "Walk-in Customer"}</span></div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "N/A"}</span></div>
+          {/* <div style={{ display: "flex", justifyContent: "space-between" }}><span>Phone:</span><span>{customerPhone || "N/A"}</span></div> */}
           <div style={{ display: "flex", justifyContent: "space-between" }}><span>Payment:</span><span>{paymentMethod}</span></div>
           
         </div>

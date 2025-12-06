@@ -1375,32 +1375,6 @@ function Receipt({ items, customerName = "", customerPhone = 0, discount = 0, pa
                                 },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Phone:"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
-                                        columnNumber: 77
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: customerPhone || "N/A"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/receipt.tsx",
-                                        lineNumber: 89,
-                                        columnNumber: 96
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/receipt.tsx",
-                                lineNumber: 89,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    justifyContent: "space-between"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Payment:"
                                     }, void 0, false, {
                                         fileName: "[project]/components/receipt.tsx",
